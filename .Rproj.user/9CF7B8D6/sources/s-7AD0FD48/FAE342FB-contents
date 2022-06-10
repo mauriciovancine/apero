@@ -1,0 +1,58 @@
+---
+title: "Future climate change will impact the size and location of breeding and wintering areas of migratory thrushes in South America"
+author: "Natalia Stefanini Da Silveira, Maurício Humberto Vancine, Alex E. Jahn, Marco Aurélio Pizo, Thadeu Sobral-Souza"
+date: "2021-04-19"
+slug: birds-cc
+categories:
+  - Artigo
+tags:
+  - Aves
+  - Modelagem de Nicho Ecológico
+  - Mudanças climáticas
+  - América do Sul
+doi: https://doi.org/10.1093/ornithapp/duab006
+publishDate: "2021-04-19"
+publication: "*The Condor: Ornithological Applications*. 123, 1-16"
+publication_short: 'The Condor: Ornithological Applications'
+summary: "Inferimos os efeitos potenciais das mudanças climáticas sobre as áreas de reprodução e invernada de aves que migram na América do Sul"
+subtitle: "Inferimos os efeitos potenciais das mudanças climáticas sobre as áreas de reprodução e invernada de aves que migram na América do Sul"
+featured: yes
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: yes
+links:
+  - icon: doi
+    icon_pack: ai
+    name: DOI
+    url: https://doi.org/10.1093/ornithapp/duab006
+  - icon: file-pdf
+    icon_pack: fas
+    name: PDF
+    url: /pdf/2021-da-silveira-etal.pdf
+---
+
+<img src="featured.jpg" width="100%" />
+
+## Resumo
+
+Bird migration patterns are changing worldwide due to current global climate changes. Addressing the effects of such changes on the migration of birds in South America is particularly challenging because the details about how birds migrate within the Neotropics are generally not well understood. Here, we aim to infer the potential effects of future climate change on breeding and wintering areas of birds that migrate within South America by estimating the size and elevations of their future breeding and wintering areas. We used occurrence data from species distribution databases (VertNet and GBIF), published studies, and eBird for 3 thrush species (Turdidae; *Turdus nigriceps*, *T. subalaris*, and *T. flavipes*) that breed and winter in different regions of South America and built ecological niche models using ensemble forecasting approaches to infer current and future potential distributions throughout the breeding and wintering periods of each species. Our findings point to future shifts in wintering and breeding areas, mainly through elevational and longitudinal changes. Future breeding areas for *T. nigriceps*, which migrates along the Andes Mountains, will be displaced to the west, while breeding displacements to the east are expected for the other 2 species. An overall loss in the size of future wintering areas was also supported for 2 of the species, especially for *T. subalaris*, but an increase is anticipated for *T. flavipes*. Our results suggest that future climate change in South America will require that species shift their breeding and wintering areas to higher elevations in addition to changes in their latitudes and longitude. Our findings are the first to show how future climate change may affect migratory birds in South America throughout the year and suggest that even closely related migratory birds in South America will be affected in different ways, depending on the regions where they breed and overwinter.
+
+## Citação
+
+```
+@article{da_silveira_etal_2021,
+	title = {Future climate change will impact the size and location of breeding and wintering areas of migratory thrushes in {South} {America}},
+	volume = {123},
+	issn = {0010-5422, 2732-4621},
+	url = {https://academic.oup.com/condor/article/doi/10.1093/ornithapp/duab006/6237321},
+	doi = {10.1093/ornithapp/duab006},
+	number = {2},
+	urldate = {2022-06-08},
+	journal = {Ornithological Applications},
+	author = {Da Silveira, Natália Stefanini and Vancine, Maurício Humberto and Jahn, Alex E and Pizo, Marco Aurélio and Sobral-Souza, Thadeu},
+	month = may,
+	year = {2021},
+	pages = {duab006},
+}
+```

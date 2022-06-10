@@ -1,0 +1,1116 @@
+#' ----
+#' theme: ecofuturo - caracteizacao ambiental
+#' autor: mauricio vancine
+#' data: 2022-05-15
+#' ----
+
+# prepare r ---------------------------------------------------------------
+
+# packages
+library(tidyverse)
+library(sf)
+library(terra)
+library(stringi)
+library(SpatialKDE)
+library(tmap)
+
+# options
+sf::sf_use_s2(FALSE)
+options(timeout = 1e5)
+
+# import data -------------------------------------------------------------
+
+## microbacias ----
+lim_bamges <- sf::st_read("03_resultados/07_limite_areas_abrangenica/limite_areas_abrangenica_bamges.shp")
+lim_bamges
+
+lim_ma <- sf::st_read("03_resultados/07_limite_areas_abrangenica/limite_areas_abrangenica_ma.shp")
+lim_ma
+
+lim_ms <- sf::st_read("03_resultados/07_limite_areas_abrangenica/limite_areas_abrangenica_ms.shp")
+lim_ms
+
+lim_sp <- sf::st_read("03_resultados/07_limite_areas_abrangenica/limite_areas_abrangenica_sp.shp")
+lim_sp
+
+## corredores ----
+cor_ba <- sf::st_read("02_data/02_vetor/corredores_fragmentos/FragmentosConectados_BA_wgs84_geo.shp")
+cor_ba
+
+cor_ma <- sf::st_read("02_data/02_vetor/corredores_fragmentos/FragmentosConectados_MA_wgs84_geo.shp")
+cor_ma
+
+cor_ms <- sf::st_read("02_data/02_vetor/corredores_fragmentos/FragmentosConectados_MS_wgs84_geo.shp")
+cor_ms
+
+## microbacias corredor ----
+micro_cor_ba <- sf::st_read(dsn = "03_resultados/05_areas_abrangencia/05_areas_prioritarias_tracados_fragmentos.gpkg",
+                            layer = "bacias_areas_prioritarias_tracados_fragmentos_ba")
+micro_cor_ba
+
+micro_cor_ma <- sf::st_read(dsn = "03_resultados/05_areas_abrangencia/05_areas_prioritarias_tracados_fragmentos.gpkg",
+                            layer = "bacias_areas_prioritarias_tracados_fragmentos_ma")
+micro_cor_ma
+
+micro_cor_ms <- sf::st_read(dsn = "03_resultados/05_areas_abrangencia/05_areas_prioritarias_tracados_fragmentos.gpkg",
+                            layer = "bacias_areas_prioritarias_tracados_fragmentos_ms")
+micro_cor_ms
+
+## imoveis ----
+imoveis <- sf::st_read("02_data/02_vetor/imoveis/imoveis_topologia_wgs84_geo.shp")
+imoveis
+
+## aavc ----
+aavc <- sf::st_read("02_data/02_vetor/aavc_rppn/AAVCs_BRA_Suzano_topologia.shp")
+aavc
+
+## rppn suzano ----
+rppn_suzano <- sf::st_read("02_data/02_vetor/aavc_rppn/AAVC_RPPN_albers_topologia.shp") %>% 
+  dplyr::filter(CODTIPO == "RPPN") %>% 
+  sf::st_transform(crs = 4326)
+rppn_suzano
+
+## rppn ----
+rppn <- sf::st_read("02_data/02_vetor/rppn/rppn_topologia.shp")
+rppn
+
+## uc ----
+uc <- sf::st_read("02_data/02_vetor/uc/UNC_21_BR_CEM_V2.shp") %>% 
+  dplyr::filter(!CATEG %in% c("APA", "RPPN"))
+uc
+
+## footprint ----
+footprint <- terra::rast("02_data/03_raster/human_footprint/HFP2009.tif") %>% 
+  terra::project("+proj=longlat +datum=WGS84", method = "near")
+footprint
+
+footprint_bamges <- footprint %>% 
+  terra::crop(terra::vect(lim_bamges)) %>% 
+  terra::mask(terra::vect(lim_bamges))
+footprint_bamges
+plot(footprint_bamges)
+
+footprint_ma <- footprint %>% 
+  terra::crop(terra::vect(lim_ma)) %>% 
+  terra::mask(terra::vect(lim_ma))
+footprint_ma
+plot(footprint_ma)
+
+footprint_ms <- footprint %>% 
+  terra::crop(terra::vect(lim_ms)) %>% 
+  terra::mask(terra::vect(lim_ms))
+footprint_ms
+plot(footprint_ms)
+
+footprint_sp <- footprint %>% 
+  terra::crop(terra::vect(lim_sp)) %>% 
+  terra::mask(terra::vect(lim_sp))
+footprint_sp
+plot(footprint_sp)
+
+rm(footprint)
+
+## carbono ----
+carbono <- terra::rast("02_data/03_raster/irrecoverable_carbon/Irrecoverable_C_Soil_2018.tif")
+carbono
+
+carbono_bamges <- carbono %>% 
+  terra::crop(terra::vect(lim_bamges)) %>% 
+  terra::mask(terra::vect(lim_bamges))
+carbono_bamges
+plot(carbono_bamges)
+
+carbono_ma <- carbono %>% 
+  terra::crop(terra::vect(lim_ma)) %>% 
+  terra::mask(terra::vect(lim_ma))
+carbono_ma
+plot(carbono_ma)
+
+carbono_ms <- carbono %>% 
+  terra::crop(terra::vect(lim_ms)) %>% 
+  terra::mask(terra::vect(lim_ms))
+carbono_ms
+plot(carbono_ms)
+
+carbono_sp <- carbono %>% 
+  terra::crop(terra::vect(lim_sp)) %>% 
+  terra::mask(terra::vect(lim_sp))
+carbono_sp
+plot(carbono_sp)
+
+writeRaster(carbono_bamges, "03_resultados/12_caracterizao_ambiental/carbono/carbono_bamges.tif")
+writeRaster(carbono_ma, "03_resultados/12_caracterizao_ambiental/carbono/carbono_ma.tif")
+writeRaster(carbono_ms, "03_resultados/12_caracterizao_ambiental/carbono/carbono_ms.tif")
+writeRaster(carbono_sp, "03_resultados/12_caracterizao_ambiental/carbono/carbono_sp.tif")
+
+rm(carbono)
+
+## densidade populacional ----
+densidade_pop <- terra::rast("02_data/03_raster/worldpop/bra_ppp_2020_UNadj.tif")
+densidade_pop
+
+densidade_pop_bamges <- densidade_pop %>% 
+  terra::crop(terra::vect(lim_bamges)) %>% 
+  terra::mask(terra::vect(lim_bamges))
+densidade_pop_bamges
+plot(densidade_pop_bamges)
+
+densidade_pop_ma <- densidade_pop %>% 
+  terra::crop(terra::vect(lim_ma)) %>% 
+  terra::mask(terra::vect(lim_ma))
+densidade_pop_ma
+plot(densidade_pop_ma)
+
+densidade_pop_ms <- densidade_pop %>% 
+  terra::crop(terra::vect(lim_ms)) %>% 
+  terra::mask(terra::vect(lim_ms))
+densidade_pop_ms
+plot(densidade_pop_ms)
+
+densidade_pop_sp <- densidade_pop %>% 
+  terra::crop(terra::vect(lim_sp)) %>% 
+  terra::mask(terra::vect(lim_sp))
+densidade_pop_sp
+plot(densidade_pop_sp)
+
+writeRaster(densidade_pop_bamges, "03_resultados/12_caracterizao_ambiental/densidade_pop/densidade_pop_bamges.tif")
+writeRaster(densidade_pop_ma, "03_resultados/12_caracterizao_ambiental/densidade_pop/densidade_pop_ma.tif")
+writeRaster(densidade_pop_ms, "03_resultados/12_caracterizao_ambiental/densidade_pop/densidade_pop_ms.tif")
+writeRaster(densidade_pop_sp, "03_resultados/12_caracterizao_ambiental/densidade_pop/densidade_pop_sp.tif")
+
+rm(densidade_pop)
+
+## forest landscape integrity index ----
+flii <- terra::rast("02_data/03_raster/forest_landscape_index/flii_SouthAmerica.tif")
+flii
+
+flii_bamges <- flii %>% 
+  terra::crop(terra::vect(lim_bamges)) %>% 
+  terra::mask(terra::vect(lim_bamges))
+flii_bamges[flii_bamges == -9999] <- NA
+flii_bamges <- flii_bamges/1e3
+plot(flii_bamges)
+
+flii_ma <- flii %>% 
+  terra::crop(terra::vect(lim_ma)) %>% 
+  terra::mask(terra::vect(lim_ma))
+flii_ma[flii_ma == -9999] <- NA
+flii_ma <- flii_ma/1e3
+plot(flii_ma)
+
+flii_ms <- flii %>% 
+  terra::crop(terra::vect(lim_ms)) %>% 
+  terra::mask(terra::vect(lim_ms))
+flii_ms[flii_ms == -9999] <- NA
+flii_ms <- flii_ms/1e3
+plot(flii_ms)
+
+flii_sp <- flii %>% 
+  terra::crop(terra::vect(lim_sp)) %>% 
+  terra::mask(terra::vect(lim_sp))
+flii_sp[flii_sp == -9999] <- NA
+flii_sp <- flii_sp/1e3
+plot(flii_sp)
+
+writeRaster(flii_bamges, "03_resultados/12_caracterizao_ambiental/flii/flii_bamges.tif")
+writeRaster(flii_ma, "03_resultados/12_caracterizao_ambiental/flii/flii_ma.tif")
+writeRaster(flii_ms, "03_resultados/12_caracterizao_ambiental/flii/flii_ms.tif")
+writeRaster(flii_sp, "03_resultados/12_caracterizao_ambiental/flii/flii_sp.tif")
+
+rm(flii)
+
+## barreiras lineares ----
+estradas <- sf::st_read("02_data/02_vetor/estradas/GRIP4_region2.shp")
+estradas
+
+estradas_filter <- estradas %>% 
+  dplyr::filter(!GP_RTP == 5,
+                !GP_REX %in% c(3, 4),
+                GP_RSE == 1) 
+estradas_filter
+
+mapbiomas <- terra::rast("02_data/03_raster/mapbiomas/brasil_coverage_2020.tif")
+mapbiomas
+
+### bamges ----
+estradas_bamges <- sf::st_intersection(estradas_filter, lim_bamges)
+estradas_bamges
+
+mapbiomas_bamges <- mapbiomas %>% 
+  terra::crop(terra::vect(lim_bamges)) %>% 
+  terra::mask(terra::vect(lim_bamges))
+mapbiomas_bamges
+
+forest_bamges <- mapbiomas_bamges %in% c(3, 4) %>% 
+  terra::mask(terra::vect(lim_bamges))
+forest_bamges[forest_bamges == 0] <- NA
+
+forest_bamges_vector <- as.polygons(forest_bamges)
+forest_bamges_vector
+
+forest_bamges_vector_sf <- sf::st_as_sf(forest_bamges_vector) %>% 
+  sf::st_cast("POLYGON") %>% 
+  dplyr::mutate(area_ha = as.numeric(sf::st_area(.)/1e4)) %>% 
+  dplyr::filter(area_ha >= 60)
+forest_bamges_vector_sf
+
+forest_bamges_vector_sf_estradas <- forest_bamges_vector_sf[estradas_bamges, ]
+forest_bamges_vector_sf_estradas
+
+forest_bamges_vector_sf_estradas_rast <- fasterize::fasterize(
+  sf = forest_bamges_vector_sf_estradas, 
+  raster = fasterize::raster(forest_bamges_vector_sf_estradas, res = 90/3600/30),
+  field = "area_ha") %>% 
+  terra::rast()
+forest_bamges_vector_sf_estradas_rast
+
+forest_bamges_vector_sf_estradas_rast_bin <- terra::ifel(is.na(forest_bamges_vector_sf_estradas_rast), 0, 1) %>% 
+  terra::mask(vect(lim_bamges))
+
+plot(log10(forest_bamges_vector_sf_estradas_rast))
+plot(forest_bamges_vector_sf_estradas_rast_bin)
+plot(estradas_bamges$geometry, add = TRUE)
+
+terra::writeRaster(forest_bamges_vector_sf_estradas_rast, "03_resultados/12_caracterizao_ambiental/barreiras/forest_bamges_vector_sf_estradas_rast.tif", overwrite = TRUE)
+terra::writeRaster(forest_bamges_vector_sf_estradas_rast_bin, "03_resultados/12_caracterizao_ambiental/barreiras/forest_bamges_vector_sf_estradas_rast_bin.tif", overwrite = TRUE)
+sf::st_write(estradas_bamges, "03_resultados/12_caracterizao_ambiental/barreiras/estradas_bamges.gpkg", delete_dsn = TRUE)
+
+### ma ----
+estradas_ma <- sf::st_intersection(estradas_filter, lim_ma)
+estradas_ma
+
+mapbiomas_ma <- mapbiomas %>% 
+  terra::crop(terra::vect(lim_ma)) %>% 
+  terra::mask(terra::vect(lim_ma))
+mapbiomas_ma
+
+forest_ma <- mapbiomas_ma %in% c(3, 4) %>% 
+  terra::mask(terra::vect(lim_ma))
+forest_ma[forest_ma == 0] <- NA
+
+forest_ma_vector <- as.polygons(forest_ma)
+forest_ma_vector
+
+forest_ma_vector_sf <- sf::st_as_sf(forest_ma_vector) %>% 
+  sf::st_cast("POLYGON") %>% 
+  dplyr::mutate(area_ha = as.numeric(sf::st_area(.)/1e4)) %>% 
+  dplyr::filter(area_ha >= 100)
+forest_ma_vector_sf
+
+forest_ma_vector_sf_estradas <- forest_ma_vector_sf[estradas_ma, ]
+forest_ma_vector_sf_estradas
+
+forest_ma_vector_sf_estradas_rast <- fasterize::fasterize(
+  sf = forest_ma_vector_sf_estradas, 
+  raster = fasterize::raster(forest_ma_vector_sf_estradas, res = 900/3600/30),
+  field = "area_ha") %>% 
+  terra::rast()
+forest_ma_vector_sf_estradas_rast
+
+forest_ma_vector_sf_estradas_rast_bin <- terra::ifel(is.na(forest_ma_vector_sf_estradas_rast), 0, 1) %>% 
+  terra::mask(vect(lim_ma))
+
+plot(log10(forest_ma_vector_sf_estradas_rast))
+plot(forest_ma_vector_sf_estradas_rast_bin)
+plot(estradas_ma$geometry, add = TRUE)
+
+terra::writeRaster(forest_ma_vector_sf_estradas_rast, "03_resultados/12_caracterizao_ambiental/barreiras/forest_ma_vector_sf_estradas_rast.tif", overwrite = TRUE)
+terra::writeRaster(forest_ma_vector_sf_estradas_rast_bin, "03_resultados/12_caracterizao_ambiental/barreiras/forest_ma_vector_sf_estradas_rast_bin.tif", overwrite = TRUE)
+sf::st_write(estradas_ma, "03_resultados/12_caracterizao_ambiental/barreiras/estradas_ma.gpkg", delete_dsn = TRUE)
+
+### ms ----
+estradas_ms <- sf::st_intersection(estradas_filter, lim_ms)
+estradas_ms
+
+mapbiomas_ms <- mapbiomas %>% 
+  terra::crop(terra::vect(lim_ms)) %>% 
+  terra::mask(terra::vect(lim_ms))
+mapbiomas_ms
+
+forest_ms <- mapbiomas_ms %in% c(3, 4) %>% 
+  terra::mask(terra::vect(lim_ms))
+forest_ms[forest_ms == 0] <- NA
+
+forest_ms_vector <- as.polygons(forest_ms)
+forest_ms_vector
+
+forest_ms_vector_sf <- sf::st_as_sf(forest_ms_vector) %>% 
+  sf::st_cast("POLYGON") %>% 
+  dplyr::mutate(area_ha = as.numeric(sf::st_area(.)/1e4)) %>% 
+  dplyr::filter(area_ha >= 60)
+forest_ms_vector_sf
+
+forest_ms_vector_sf_estradas <- forest_ms_vector_sf[estradas_ms, ]
+forest_ms_vector_sf_estradas
+
+forest_ms_vector_sf_estradas_rast <- fasterize::fasterize(
+  sf = forest_ms_vector_sf_estradas, 
+  raster = fasterize::raster(forest_ms_vector_sf_estradas, res = 90/3600/30),
+  field = "area_ha") %>% 
+  terra::rast()
+forest_ms_vector_sf_estradas_rast
+
+forest_ms_vector_sf_estradas_rast_bin <- terra::ifel(is.na(forest_ms_vector_sf_estradas_rast), 0, 1) %>% 
+  terra::mask(vect(lim_ms))
+
+plot(log10(forest_ms_vector_sf_estradas_rast))
+plot(forest_ms_vector_sf_estradas_rast_bin)
+plot(estradas_ms$geometry, add = TRUE)
+
+terra::writeRaster(forest_ms_vector_sf_estradas_rast, "03_resultados/12_caracterizao_ambiental/barreiras/forest_ms_vector_sf_estradas_rast.tif", overwrite = TRUE)
+terra::writeRaster(forest_ms_vector_sf_estradas_rast_bin, "03_resultados/12_caracterizao_ambiental/barreiras/forest_ms_vector_sf_estradas_rast_bin.tif", overwrite = TRUE)
+sf::st_write(estradas_ms, "03_resultados/12_caracterizao_ambiental/barreiras/estradas_ms.gpkg", delete_dsn = TRUE)
+
+
+### sp ----
+estradas_sp <- sf::st_intersection(estradas_filter, lim_sp)
+estradas_sp
+
+mapbiomas_sp <- mapbiomas %>% 
+  terra::crop(terra::vect(lim_sp)) %>% 
+  terra::mask(terra::vect(lim_sp))
+mapbiomas_sp
+
+forest_sp <- mapbiomas_sp %in% c(3, 4) %>% 
+  terra::mask(terra::vect(lim_sp))
+forest_sp[forest_sp == 0] <- NA
+
+forest_sp_vector <- as.polygons(forest_sp)
+forest_sp_vector
+
+forest_sp_vector_sf <- sf::st_as_sf(forest_sp_vector) %>% 
+  sf::st_cast("POLYGON") %>% 
+  dplyr::mutate(area_ha = as.numeric(sf::st_area(.)/1e4)) %>% 
+  dplyr::filter(area_ha >= 60)
+forest_sp_vector_sf
+
+forest_sp_vector_sf_estradas <- forest_sp_vector_sf[estradas_sp, ]
+forest_sp_vector_sf_estradas
+
+forest_sp_vector_sf_estradas_rast <- fasterize::fasterize(
+  sf = forest_sp_vector_sf_estradas, 
+  raster = fasterize::raster(forest_sp_vector_sf_estradas, res = 90/3600/30),
+  field = "area_ha") %>% 
+  terra::rast()
+forest_sp_vector_sf_estradas_rast
+
+forest_sp_vector_sf_estradas_rast_bin <- terra::ifel(is.na(forest_sp_vector_sf_estradas_rast), 0, 1) %>% 
+  terra::mask(vect(lim_sp))
+
+plot(log10(forest_sp_vector_sf_estradas_rast))
+plot(forest_sp_vector_sf_estradas_rast_bin)
+plot(estradas_sp$geometry, add = TRUE)
+
+terra::writeRaster(forest_sp_vector_sf_estradas_rast, "03_resultados/12_caracterizao_ambiental/barreiras/forest_sp_vector_sf_estradas_rast.tif", overwrite = TRUE)
+terra::writeRaster(forest_sp_vector_sf_estradas_rast_bin, "03_resultados/12_caracterizao_ambiental/barreiras/forest_sp_vector_sf_estradas_rast_bin.tif", overwrite = TRUE)
+sf::st_write(estradas_sp, "03_resultados/12_caracterizao_ambiental/barreiras/estradas_sp.gpkg", delete_dsn = TRUE)
+
+## nascentes ----
+nascentes_bamges <- terra::rast("02_data/03_raster/dem/streams_bamges_nascentes_kde.tif")
+nascentes_bamges
+
+nascentes_ma <- terra::rast("02_data/03_raster/dem/streams_ma_nascentes_kde.tif")
+nascentes_ma
+
+nascentes_ms <- terra::rast("02_data/03_raster/dem/streams_ms_nascentes_kde.tif")
+nascentes_ms
+
+nascentes_sp <- terra::rast("02_data/03_raster/dem/streams_sp_nascentes_kde.tif")
+nascentes_sp
+
+# maps --------------------------------------------------------------------
+
+# bacias ----
+
+## bamges ----
+map_bamges_bacias <- tm_shape(lim_bamges) +
+  tm_polygons() +
+  tm_shape(micro_cor_ba) +
+  tm_polygons(col = "orange") +
+  tm_shape(cor_ba) +
+  tm_fill(col = "forestgreen") +
+  tm_shape(imoveis[lim_bamges, ]) +
+  tm_fill(col = "gray30", alpha = .7) +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_add_legend(type = "fill", 
+                labels = c("Bacias total", "Bacias corredores", "Corredores", "Imóveis"),
+                col = c("gray", "orange", "forestgreen", "gray30"),
+                border.col = "gray40",
+                size = 5,
+                title = "Legenda") +
+  tm_layout(title = "BAMGES",
+            legend.title.size = 1.8,
+            legend.title.fontface = "bold",
+            legend.text.size = 1)
+map_bamges_bacias
+tmap_save(tm = map_bamges_bacias, filename = "03_resultados/12_caracterizao_ambiental/map_bamges_bacias.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+## ma ----
+map_ma_bacias <- tm_shape(lim_ma) +
+  tm_polygons() +
+  tm_shape(micro_cor_ma) +
+  tm_polygons(col = "orange") +
+  tm_shape(cor_ma) +
+  tm_fill(col = "forestgreen") +
+  tm_shape(imoveis[lim_ma, ]) +
+  tm_fill(col = "gray30", alpha = .7) +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_add_legend(type = "fill", 
+                labels = c("Bacias total", "Bacias corredores", "Corredores", "Imóveis"),
+                col = c("gray", "orange", "forestgreen", "gray30"),
+                border.col = "gray40",
+                size = 5,
+                title = "Legenda") +
+  tm_layout(title = "MA",
+            legend.position = c(0, 0),
+            legend.title.size = 1.8,
+            legend.title.fontface = "bold",
+            legend.text.size = 1)
+# map_ma_bacias
+tmap_save(tm = map_ma_bacias, filename = "03_resultados/12_caracterizao_ambiental/map_ma_bacias.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+## ms ----
+map_ms_bacias <- tm_shape(lim_ms) +
+  tm_polygons() +
+  tm_shape(st_intersection(micro_cor_ms, st_union(lim_ms))) +
+  tm_polygons(col = "orange") +
+  tm_shape(cor_ms) +
+  tm_fill(col = "forestgreen") +
+  tm_shape(imoveis[lim_ms, ]) +
+  tm_fill(col = "gray30", alpha = .7) +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_add_legend(type = "fill", 
+                labels = c("Bacias total", "Bacias corredores", "Corredores", "Imóveis"),
+                col = c("gray", "orange", "forestgreen", "gray30"),
+                border.col = "gray40",
+                size = 5,
+                title = "Legenda") +
+  tm_layout(title = "MS", 
+            legend.title.size = 1.8,
+            legend.title.fontface = "bold",
+            legend.text.size = 1)
+# map_ms_bacias
+tmap_save(tm = map_ms_bacias, filename = "03_resultados/12_caracterizao_ambiental/map_ms_bacias.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+## sp ----
+map_sp_bacias <- tm_shape(lim_sp) +
+  tm_polygons() +
+  # tm_shape(micro_cor_sp) +
+  # tm_polygons(col = "orange") +
+  # tm_shape(cor_sp) +
+  # tm_fill(col = "forestgreen") +
+  tm_shape(imoveis) +
+  tm_fill(col = "gray30", alpha = .7) +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_add_legend(type = "fill", 
+                labels = c("Bacias total", "Imóveis"),
+                col = c("gray", "gray30"),
+                border.col = "gray40",
+                size = 5,
+                title = "Legenda") +
+  tm_layout(title = "SP",
+            legend.position = c(.01, 0),
+            legend.title.size = 1.8,
+            legend.title.fontface = "bold",
+            legend.text.size = 1)
+# map_sp_bacias
+tmap_save(tm = map_sp_bacias, filename = "03_resultados/12_caracterizao_ambiental/map_sp_bacias.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+# ucs ----
+
+## bamges ----
+map_bamges_ucs <- tm_shape(lim_bamges) +
+  tm_polygons() +
+  tm_shape(uc[lim_bamges, ]) +
+  tm_fill(col = "green", alpha = .7) +
+  tm_shape(rppn[lim_bamges, ]) +
+  tm_fill(col = "darkgreen", alpha = .7) +
+  tm_shape(rppn_suzano[lim_bamges, ]) +
+  tm_fill(col = "brown", alpha = .7) +
+  tm_shape(aavc[lim_bamges, ]) +
+  tm_fill(col = "purple", alpha = .7) +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_add_legend(type = "fill", 
+                labels = c("Bacias total", "UCs", "RPPNs", "RPPNs Suzano", "AAVCs"),
+                col = c("gray", "green", "darkgreen", "brown", "purple"),
+                border.col = "gray40",
+                size = 5,
+                title = "Legenda") +
+  tm_layout(title = "BAMGES",
+            legend.title.size = 1.8,
+            legend.title.fontface = "bold",
+            legend.text.size = 1)
+# map_bamges_ucs
+tmap_save(tm = map_bamges_ucs, filename = "03_resultados/12_caracterizao_ambiental/map_bamges_ucs.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+## ma ----
+map_ma_ucs <- tm_shape(lim_ma) +
+  tm_polygons() +
+  tm_shape(uc[lim_ma, ]) +
+  tm_fill(col = "green", alpha = .7) +
+  tm_shape(rppn[lim_ma, ]) +
+  tm_fill(col = "darkgreen", alpha = .7) +
+  tm_shape(rppn_suzano[lim_ma, ]) +
+  tm_fill(col = "brown", alpha = .7) +
+  tm_shape(aavc[lim_ma, ]) +
+  tm_fill(col = "purple", alpha = .7) +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_add_legend(type = "fill", 
+                labels = c("Bacias total", "UCs", "RPPNs", "RPPNs Suzano", "AAVCs"),
+                col = c("gray", "green", "darkgreen", "brown", "purple"),
+                border.col = "gray40",
+                size = 5,
+                title = "Legenda") +
+  tm_layout(title = "MA",
+            legend.position = c(0, 0),
+            legend.title.size = 1.8,
+            legend.title.fontface = "bold",
+            legend.text.size = 1)
+# map_ma_ucs
+tmap_save(tm = map_ma_ucs, filename = "03_resultados/12_caracterizao_ambiental/map_ma_ucs.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+## ms ----
+map_ms_ucs <- tm_shape(lim_ms) +
+  tm_polygons() +
+  tm_shape(uc[lim_ms, ]) +
+  tm_fill(col = "green", alpha = .7) +
+  tm_shape(rppn) +
+  tm_fill(col = "darkgreen", alpha = .7) +
+  tm_shape(rppn_suzano) +
+  tm_fill(col = "brown", alpha = .7) +
+  tm_shape(aavc) +
+  tm_fill(col = "purple", alpha = .7) +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_add_legend(type = "fill", 
+                labels = c("Bacias total", "UCs", "RPPNs", "RPPNs Suzano", "AAVCs"),
+                col = c("gray", "green", "darkgreen", "brown", "purple"),
+                border.col = "gray40",
+                size = 5,
+                title = "Legenda") +
+  tm_layout(title = "MS", 
+            legend.title.size = 1.8,
+            legend.title.fontface = "bold",
+            legend.text.size = 1)
+# map_ms_ucs
+tmap_save(tm = map_ms_ucs, filename = "03_resultados/12_caracterizao_ambiental/map_ms_ucs.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+## sp ----
+map_sp_ucs <- tm_shape(lim_sp) +
+  tm_polygons() +
+  tm_shape(uc[lim_sp, ]) +
+  tm_fill(col = "green", alpha = .7) +
+  tm_shape(rppn[lim_sp, ]) +
+  tm_fill(col = "darkgreen", alpha = .7) +
+  tm_shape(rppn_suzano[lim_sp, ]) +
+  tm_fill(col = "brown", alpha = .7) +
+  tm_shape(aavc[lim_sp, ]) +
+  tm_fill(col = "purple", alpha = .7) +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_add_legend(type = "fill", 
+                labels = c("Bacias total", "UCs", "RPPNs", "RPPNs Suzano", "AAVCs"),
+                col = c("gray", "green", "darkgreen", "brown", "purple"),
+                border.col = "gray40",
+                size = 5,
+                title = "Legenda") +
+  tm_layout(title = "SP",
+            legend.position = c(.01, 0),
+            legend.title.size = 1.8,
+            legend.title.fontface = "bold",
+            legend.text.size = 1)
+# map_sp_ucs
+tmap_save(tm = map_sp_ucs, filename = "03_resultados/12_caracterizao_ambiental/map_sp_ucs.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+# pegada ecologica ----
+
+## bamges ----
+footprint_colors <- c("#253776", "#239691", "#4cb748", "#f6ec25", "#eca821", "#c3543b")
+footprint_colors
+
+map_bamges_footprint <- tm_shape(footprint_bamges) +
+  tm_raster(pal = footprint_colors, n = 10, title = "Pegada \necológica") +
+  tm_shape(lim_bamges) +
+  tm_borders(col = "gray") +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_layout(title = "BAMGES",
+            legend.position = c("left", "bottom"),
+            legend.title.size = 1.8,
+            legend.title.fontface = "bold",
+            legend.text.size = 1)
+map_bamges_footprint
+tmap_save(tm = map_bamges_footprint, filename = "03_resultados/12_caracterizao_ambiental/map_bamges_footprint.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+## ma ----
+map_ma_footprint <- tm_shape(footprint_ma) +
+  tm_raster(pal = footprint_cols(), n = 10, title = "Pegada \necológica") +
+  tm_shape(lim_ma) +
+  tm_borders(col = "gray") +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_layout(title = "MA",
+            legend.position = c("left", "bottom"),
+            legend.title.size = 1.3,
+            legend.title.fontface = "bold",
+            legend.text.size = .8)
+map_ma_footprint
+tmap_save(tm = map_ma_footprint, filename = "03_resultados/12_caracterizao_ambiental/map_ma_footprint.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+## ms ----
+map_ms_footprint <- tm_shape(footprint_ms) +
+  tm_raster(pal = footprint_cols(), n = 10, title = "Pegada \necológica") +
+  tm_shape(lim_ms) +
+  tm_borders(col = "gray") +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_layout(title = "MS",
+            legend.position = c("left", "bottom"),
+            legend.title.size = 1.8,
+            legend.title.fontface = "bold",
+            legend.text.size = 1)
+map_ms_footprint
+tmap_save(tm = map_ms_footprint, filename = "03_resultados/12_caracterizao_ambiental/map_ms_footprint.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+## sp ----
+map_sp_footprint <- tm_shape(footprint_sp) +
+  tm_raster(pal = footprint_cols(), n = 10, title = "Pegada \necológica") +
+  tm_shape(lim_sp) +
+  tm_borders(col = "gray") +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_layout(title = "SP",
+            legend.position = c("left", "bottom"),
+            legend.title.size = 1.8,
+            legend.title.fontface = "bold",
+            legend.text.size = 1)
+map_sp_footprint
+tmap_save(tm = map_sp_footprint, filename = "03_resultados/12_caracterizao_ambiental/map_sp_footprint.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+# carbono ----
+
+## bamges ----
+map_bamges_carbono <- tm_shape(carbono_bamges) +
+  tm_raster(pal = "-cividis", title = "Carbono \nirrecuperável") +
+  tm_shape(lim_bamges) +
+  tm_borders(col = "gray") +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_layout(title = "BAMGES",
+            legend.position = c("left", "bottom"),
+            legend.title.size = 1.8,
+            legend.title.fontface = "bold",
+            legend.text.size = 1)
+map_bamges_carbono
+tmap_save(tm = map_bamges_carbono, filename = "03_resultados/12_caracterizao_ambiental/map_bamges_carbono.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+## ma ----
+map_ma_carbono <- tm_shape(carbono_ma) +
+  tm_raster(pal = "-cividis", title = "Carbono \nirrecuperável") +
+  tm_shape(lim_ma) +
+  tm_borders(col = "gray") +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_layout(title = "MA",
+            legend.position = c("left", "bottom"),
+            legend.title.size = 1.3,
+            legend.title.fontface = "bold",
+            legend.text.size = 1)
+map_ma_carbono
+tmap_save(tm = map_ma_carbono, filename = "03_resultados/12_caracterizao_ambiental/map_ma_carbono.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+## ms ----
+map_ms_carbono <- tm_shape(carbono_ms) +
+  tm_raster(pal = "-cividis", title = "Carbono \nirrecuperável") +
+  tm_shape(lim_ms) +
+  tm_borders(col = "gray") +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_layout(title = "MS",
+            legend.position = c("left", "bottom"),
+            legend.title.size = 1.8,
+            legend.title.fontface = "bold",
+            legend.text.size = 1)
+map_ms_carbono
+tmap_save(tm = map_ms_carbono, filename = "03_resultados/12_caracterizao_ambiental/map_ms_carbono.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+## sp ----
+map_sp_carbono <- tm_shape(carbono_sp) +
+  tm_raster(pal = "-cividis", title = "Carbono \nirrecuperável") +
+  tm_shape(lim_sp) +
+  tm_borders(col = "gray") +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_layout(title = "SP",
+            legend.position = c("left", "bottom"),
+            legend.title.size = 1.8,
+            legend.title.fontface = "bold",
+            legend.text.size = 1)
+map_sp_carbono
+tmap_save(tm = map_sp_carbono, filename = "03_resultados/12_caracterizao_ambiental/map_sp_carbono.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+# densidade populacional ----
+
+## bamges ----
+map_bamges_densidade_pop <- tm_shape(densidade_pop_bamges) +
+  tm_raster(pal = "viridis", style = "quantile", title = "Densidade \npopulacional") +
+  tm_shape(lim_bamges) +
+  tm_borders(col = "gray") +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_layout(title = "BAMGES",
+            legend.position = c("left", "bottom"),
+            legend.title.size = 1.8,
+            legend.title.fontface = "bold",
+            legend.text.size = 1)
+map_bamges_densidade_pop
+tmap_save(tm = map_bamges_densidade_pop, filename = "03_resultados/12_caracterizao_ambiental/map_bamges_densidade_pop.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+## ma ----
+map_ma_densidade_pop <- tm_shape(densidade_pop_ma) +
+  tm_raster(pal = "viridis", style = "quantile", title = "Densidade \npopulacional") +
+  tm_shape(lim_ma) +
+  tm_borders(col = "gray") +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_layout(title = "MA",
+            legend.position = c("left", "bottom"),
+            legend.title.size = 1.3,
+            legend.title.fontface = "bold",
+            legend.text.size = .8)
+map_ma_densidade_pop
+tmap_save(tm = map_ma_densidade_pop, filename = "03_resultados/12_caracterizao_ambiental/map_ma_densidade_pop.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+## ms ----
+map_ms_densidade_pop <- tm_shape(densidade_pop_ms) +
+  tm_raster(pal = "viridis", style = "quantile", title = "Densidade \npopulacional") +
+  tm_shape(lim_ms) +
+  tm_borders(col = "gray") +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_layout(title = "MS",
+            legend.position = c("left", "bottom"),
+            legend.title.size = 1.8,
+            legend.title.fontface = "bold",
+            legend.text.size = 1)
+map_ms_densidade_pop
+tmap_save(tm = map_ms_densidade_pop, filename = "03_resultados/12_caracterizao_ambiental/map_ms_densidade_pop.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+## sp ----
+map_sp_densidade_pop <- tm_shape(densidade_pop_sp) +
+  tm_raster(pal = "viridis", style = "quantile", title = "Densidade \npopulacional") +
+  tm_shape(lim_sp) +
+  tm_borders(col = "gray") +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_layout(title = "SP",
+            legend.position = c("left", "bottom"),
+            legend.title.size = 1.5,
+            legend.title.fontface = "bold",
+            legend.text.size = 1)
+map_sp_densidade_pop
+tmap_save(tm = map_sp_densidade_pop, filename = "03_resultados/12_caracterizao_ambiental/map_sp_densidade_pop.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+# forest landscape integrity index ----
+fiii_colors <- c("#6e5618", "#c7a945", "#d6ce3f", "#89b319", "#2d7d00")
+fiii_colors
+
+## bamges ----
+map_bamges_flii <- tm_shape(flii_bamges) +
+  tm_raster(pal = fiii_colors, title = "FLII") +
+  tm_shape(lim_bamges) +
+  tm_borders(col = "gray") +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_layout(title = "BAMGES",
+            legend.position = c("left", "bottom"),
+            legend.title.size = 1.8,
+            legend.title.fontface = "bold",
+            legend.text.size = 1)
+map_bamges_flii
+tmap_save(tm = map_bamges_flii, filename = "03_resultados/12_caracterizao_ambiental/map_bamges_flii.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+## ma ----
+map_ma_flii <- tm_shape(flii_ma) +
+  tm_raster(pal = fiii_cols(), title = "FLII") +
+  tm_shape(lim_ma) +
+  tm_borders(col = "gray") +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_layout(title = "MA",
+            legend.position = c("left", "bottom"),
+            legend.title.size = 1.8,
+            legend.title.fontface = "bold",
+            legend.text.size = 1)
+map_ma_flii
+tmap_save(tm = map_ma_flii, filename = "03_resultados/12_caracterizao_ambiental/map_ma_flii.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+## ms ----
+map_ms_flii <- tm_shape(flii_ms) +
+  tm_raster(pal = fiii_cols(), title = "FLII") +
+  tm_shape(lim_ms) +
+  tm_borders(col = "gray") +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_layout(title = "MS",
+            legend.position = c("left", "bottom"),
+            legend.title.size = 1.8,
+            legend.title.fontface = "bold",
+            legend.text.size = 1)
+map_ms_flii
+tmap_save(tm = map_ms_flii, filename = "03_resultados/12_caracterizao_ambiental/map_ms_flii.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+## sp ----
+map_sp_flii <- tm_shape(flii_sp) +
+  tm_raster(pal = fiii_cols(), title = "FLII") +
+  tm_shape(lim_sp) +
+  tm_borders(col = "gray") +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_layout(title = "SP",
+            legend.position = c("left", "bottom"),
+            legend.title.size = 1.8,
+            legend.title.fontface = "bold",
+            legend.text.size = 1)
+map_sp_flii
+tmap_save(tm = map_sp_flii, filename = "03_resultados/12_caracterizao_ambiental/map_sp_flii.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+# barreiras lineares ----
+
+## bamges ----
+map_bamges_barreiras_lineares <- tm_shape(lim_bamges) +
+  tm_borders(col = "gray") +
+  tm_shape(log10(forest_bamges_vector_sf_estradas_rast)) +
+  tm_raster(pal = c("#0bff00", "#004a03"), title = "Área (log10 ha)", 
+            labels = c("10¹-10²", "10²-10³", "10³-10⁴", "10⁴-10⁵", "10⁵-10⁶", "10⁶-10⁷")) +
+  tm_shape(estradas_bamges) +
+  tm_lines(lwd = 1.5, col = "red") +
+  tm_shape(lim_bamges) +
+  tm_borders(col = "gray") +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_layout(title = "BAMGES",
+            legend.position = c("left", "bottom"),
+            legend.title.size = 1.8,
+            legend.title.fontface = "bold",
+            legend.text.size = 1)
+map_bamges_barreiras_lineares
+tmap_save(tm = map_bamges_barreiras_lineares, filename = "03_resultados/12_caracterizao_ambiental/map_bamges_barreiras_lineares.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+## ma ----
+map_ma_barreiras_lineares <-   tm_shape(lim_ma) +
+  tm_borders(col = "gray") +
+  tm_shape(log10(forest_ma_vector_sf_estradas_rast)) +
+  tm_raster(pal = c("#0bff00", "#004a03"), title = "Área (log10 ha)", 
+            labels = c("10¹-10²", "10²-10³", "10³-10⁴", "10⁴-10⁵", "10⁵-10⁶", "10⁶-10⁷")) +
+  tm_shape(estradas_ma) +
+  tm_lines(lwd = 1.5, col = "red") +
+  tm_shape(lim_ma) +
+  tm_borders(col = "gray") +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_layout(title = "MA",
+            legend.position = c("left", "bottom"),
+            legend.title.size = 1.1,
+            legend.title.fontface = "bold",
+            legend.text.size = .9)
+map_ma_barreiras_lineares
+tmap_save(tm = map_ma_barreiras_lineares, filename = "03_resultados/12_caracterizao_ambiental/map_ma_barreiras_lineares.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+## ms ----
+map_ms_barreiras_lineares <-   tm_shape(lim_ms) +
+  tm_borders(col = "gray") +
+  tm_shape(log10(forest_ms_vector_sf_estradas_rast)) +
+  tm_raster(pal = c("#0bff00", "#004a03"), title = "Área (log10 ha)", 
+            labels = c("10¹-10²", "10²-10³", "10³-10⁴", "10⁴-10⁵", "10⁵-10⁶", "10⁶-10⁷")) +
+  tm_shape(estradas_ms) +
+  tm_lines(lwd = 1.5, col = "red") +
+  tm_shape(lim_ms) +
+  tm_borders(col = "gray") +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_layout(title = "MS",
+            legend.position = c("left", "bottom"),
+            legend.title.size = 1.8,
+            legend.title.fontface = "bold",
+            legend.text.size = 1)
+map_ms_barreiras_lineares
+tmap_save(tm = map_ms_barreiras_lineares, filename = "03_resultados/12_caracterizao_ambiental/map_ms_barreiras_lineares.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+## sp ----
+map_sp_barreiras_lineares <- tm_shape(lim_sp) +
+  tm_borders(col = "gray") +
+  tm_shape(log10(forest_sp_vector_sf_estradas_rast)) +
+  tm_raster(pal = c("#0bff00", "#004a03"), title = "Área (log10 ha)", 
+            labels = c("10¹-10²", "10²-10³", "10³-10⁴", "10⁴-10⁵", "10⁵-10⁶", "10⁶-10⁷")) +
+  tm_shape(estradas_sp) +
+  tm_lines(lwd = 1.5, col = "red") +
+  tm_shape(lim_sp) +
+  tm_borders(col = "gray") +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_layout(title = "SP",
+            legend.position = c("left", "bottom"),
+            legend.title.size = 1.5,
+            legend.title.fontface = "bold",
+            legend.text.size = 1.1)
+map_sp_barreiras_lineares
+tmap_save(tm = map_sp_barreiras_lineares, filename = "03_resultados/12_caracterizao_ambiental/map_sp_barreiras_lineares.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+# nascentes ----
+
+## bamges ----
+map_bamges_nascentes <-   tm_shape(lim_bamges) +
+  tm_borders(col = "gray10") +
+  tm_shape(nascentes_bamges) +
+  tm_raster(pal = cptcity::cpt("grass_bcyr"), style = "cont", 
+            breaks = pretty(cellStats(raster(nascentes_bamges), range), 10),
+            title = "Kernel das \nnascentes") +
+  tm_shape(lim_bamges) +
+  tm_borders(col = "gray10") +
+  tm_shape(imoveis[lim_bamges, ]) +
+  tm_fill(col = "gray30", alpha = .7) +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_layout(title = "BAMGES",
+            legend.position = c("left", "bottom"),
+            legend.title.size = 1.8,
+            legend.title.fontface = "bold",
+            legend.text.size = 1)
+map_bamges_nascentes
+tmap_save(tm = map_bamges_nascentes, filename = "03_resultados/12_caracterizao_ambiental/map_bamges_nascentes.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+## ma ----
+map_ma_nascentes <-   tm_shape(lim_ma) +
+  tm_borders(col = "gray10") +
+  tm_shape(nascentes_ma) +
+  tm_raster(pal = cptcity::cpt("grass_bcyr"), style = "cont", 
+            breaks = pretty(cellStats(raster(nascentes_ma), range), 10),
+            title = "Kernel das \nnascentes") +
+  tm_shape(lim_ma) +
+  tm_borders(col = "gray10") +
+  tm_shape(imoveis[lim_ma, ]) +
+  tm_fill(col = "gray30", alpha = .7) +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_layout(title = "MA",
+            legend.position = c("left", "bottom"),
+            legend.title.size = 1.1,
+            legend.title.fontface = "bold",
+            legend.text.size = .8)
+map_ma_nascentes
+tmap_save(tm = map_ma_nascentes, filename = "03_resultados/12_caracterizao_ambiental/map_ma_nascentes.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+## ms ----
+map_ms_nascentes <-   tm_shape(lim_ms) +
+  tm_borders(col = "gray10") +
+  tm_shape(nascentes_ms) +
+  tm_raster(pal = cptcity::cpt("grass_bcyr"), style = "cont", 
+            breaks = pretty(cellStats(raster(nascentes_ms), range), 10),
+            title = "Kernel das \nnascentes") +
+  tm_shape(lim_ms) +
+  tm_borders(col = "gray10") +
+  tm_shape(imoveis[lim_ms, ]) +
+  tm_fill(col = "gray30", alpha = .7) +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_layout(title = "MS",
+            legend.position = c("left", "bottom"),
+            legend.title.size = 1.5,
+            legend.title.fontface = "bold",
+            legend.text.size = .9)
+map_ms_nascentes
+tmap_save(tm = map_ms_nascentes, filename = "03_resultados/12_caracterizao_ambiental/map_ms_nascentes.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+## sp ----
+map_sp_nascentes <-   tm_shape(lim_sp) +
+  tm_borders(col = "gray10") +
+  tm_shape(nascentes_sp) +
+  tm_raster(pal = cptcity::cpt("grass_bcyr"), style = "cont", 
+            breaks = pretty(cellStats(raster(nascentes_sp), range), 10),
+            title = "Kernel das \nnascentes") +
+  tm_shape(lim_sp) +
+  tm_borders(col = "gray10") +
+  tm_shape(imoveis[lim_sp, ]) +
+  tm_fill(col = "gray30", alpha = .7) +
+  tm_graticules(lines = FALSE, labels.size = .8) +
+  tm_compass(size = 3) +
+  tm_scale_bar(text.size = .8) +
+  tm_layout(title = "SP",
+            legend.position = c("left", "bottom"),
+            legend.title.size = 1.8,
+            legend.title.fontface = "bold",
+            legend.text.size = 1)
+map_sp_nascentes
+tmap_save(tm = map_sp_nascentes, filename = "03_resultados/12_caracterizao_ambiental/map_sp_nascentes.png", 
+          width = 30, height = 20, units = "cm", dpi = 300)
+
+# end ---------------------------------------------------------------------
