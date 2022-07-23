@@ -178,6 +178,12 @@ enableEmoji = true
     title = "Contato"
     url = "/contact/"
     weight = 2
+    
+      [[menu.footer]]
+    name = "Financiamento"
+    title = "Financiamento"
+    url = "/contributors/"
+    weight = 2
 
 # see https://gohugo.io/about/hugo-and-gdpr/    
 [privacy]
