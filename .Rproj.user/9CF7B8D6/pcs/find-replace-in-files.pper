@@ -1,15 +1,13 @@
 {
     "dialog-state": {
-        "query": "Made by Formspree",
+        "query": "contributors",
         "path": "",
         "regex": false,
         "caseSensitive": false,
         "wholeWord": false,
         "filePatterns": [],
-        "useGitGrep": true,
-        "excludeGitIgnore": true,
         "excludeFilePatterns": [],
-        "resultsCount": 2,
+        "resultsCount": 18,
         "errorCount": 0,
         "replaceErrors": "",
         "projectRelative": true
