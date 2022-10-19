@@ -95,10 +95,6 @@ enableEmoji = true
       icon_pack = "fab"
       url       = "https://twitter.com/mauriciovancine"
   [[params.social]]
-      icon      = "impactstory" # icon name without the 'fa-'
-      icon_pack = "ai"
-      url       = "https://profiles.impactstory.org/u/0000-0001-9650-7575"
-  [[params.social]]
       icon      = "researchgate" # icon name without the 'fa-'
       icon_pack = "ai"
       url       = "https://www.researchgate.net/profile/Mauricio-Vancine"
