@@ -90,7 +90,11 @@ enableEmoji = true
       icon      = "github" # icon name without the 'fa-'
       icon_pack = "fab"
       url       = "https://github.com/mauriciovancine"
-  [[params.social]]
+    [[params.social]]
+      icon      = "square" # icon name without the 'fa-'
+      icon_pack = "fas"
+      url       = "https://bsky.app/profile/mauriciovancine.bsky.social"
+    [[params.social]]
       icon      = "twitter" # icon name without the 'fa-'
       icon_pack = "fab"
       url       = "https://twitter.com/mauriciovancine"
@@ -159,7 +163,7 @@ enableEmoji = true
   [[menu.header]]
     name = "CV"
     title = ""
-    url = "https://mauriciovancine.github.io/cv/cv-mauricio-vancine-pt-academic-complete.html"
+    url = "https://mauriciovancine.github.io/cv/cv-academic.pdf"
     weight = 7
     
   # Configure footer  
