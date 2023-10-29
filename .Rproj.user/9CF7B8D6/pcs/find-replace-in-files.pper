@@ -1,13 +1,15 @@
 {
     "dialog-state": {
-        "query": "contributors",
+        "query": "draft: false",
         "path": "",
         "regex": false,
         "caseSensitive": false,
         "wholeWord": false,
         "filePatterns": [],
+        "useGitGrep": true,
+        "excludeGitIgnore": false,
         "excludeFilePatterns": [],
-        "resultsCount": 18,
+        "resultsCount": 29,
         "errorCount": 0,
         "replaceErrors": "",
         "projectRelative": true
