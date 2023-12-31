@@ -92,7 +92,7 @@ enableEmoji = true
       url       = "https://github.com/mauriciovancine"
     [[params.social]]
       icon      = "square" # icon name without the 'fa-'
-      icon_pack = "fas"
+      icon_pack = "fa"
       url       = "https://bsky.app/profile/mauriciovancine.bsky.social"
     [[params.social]]
       icon      = "twitter" # icon name without the 'fa-'
