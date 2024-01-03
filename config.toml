@@ -121,7 +121,7 @@ enableEmoji = true
   [[params.social]]
       icon      = "osf" # icon name without the 'fa-'
       icon_pack = "ai"
-      url       = "osf.io/k8mxe"
+      url       = "https://osf.io/k8mxe/"
   [[params.social]]
       icon      = "figshare" # icon name without the 'fa-'
       icon_pack = "ai"
