@@ -111,13 +111,25 @@ enableEmoji = true
       icon_pack = "ai"
       url       = "https://orcid.org/0000-0001-9650-7575"
   [[params.social]]
-      icon      = "clarivate" # icon name without the 'fa-'
+      icon      = "researcherid" # icon name without the 'fa-'
       icon_pack = "ai"
       url       = "https://www.webofscience.com/wos/author/record/837504"
   [[params.social]]
       icon      = "scopus" # icon name without the 'fa-'
       icon_pack = "ai"
       url       = "https://www.scopus.com/authid/detail.uri?authorId=57193451888"
+  [[params.social]]
+      icon      = "osf" # icon name without the 'fa-'
+      icon_pack = "ai"
+      url       = "osf.io/k8mxe"
+  [[params.social]]
+      icon      = "figshare" # icon name without the 'fa-'
+      icon_pack = "ai"
+      url       = "https://figshare.com/authors/Mauricio_Vancine/2842289"
+  [[params.social]]
+      icon      = "zotero" # icon name without the 'fa-'
+      icon_pack = "ai" 
+      url       = "https://www.zotero.org/mauriciovancine"
   [[params.social]]
       icon      = "lattes" # icon name without the 'fa-'
       icon_pack = "ai"
