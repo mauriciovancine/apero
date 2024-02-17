@@ -134,6 +134,10 @@ enableEmoji = true
       icon      = "lattes" # icon name without the 'fa-'
       icon_pack = "ai"
       url       = "http://lattes.cnpq.br/9761288418931193"
+  [[params.social]]
+      icon      = "linkedin-in" # icon name without the 'fa-'
+      icon_pack = "fab"
+      url       = "https://www.linkedin.com/in/mauricio-vancine/"
 
 [taxonomies]
   category = "categories"
