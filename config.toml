@@ -94,7 +94,11 @@ enableEmoji = true
       icon      = "square" # icon name without the 'fa-'
       icon_pack = "fa"
       url       = "https://bsky.app/profile/mauriciovancine.bsky.social"
-    [[params.social]]
+  [[params.social]]
+      icon      = "mastodon" # icon name without the 'fa-'
+      icon_pack = "fab"
+      url       = "https://mastodon.social/@mauriciovancine"
+  [[params.social]]
       icon      = "twitter" # icon name without the 'fa-'
       icon_pack = "fab"
       url       = "https://twitter.com/mauriciovancine"
