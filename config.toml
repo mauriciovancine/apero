@@ -1,4 +1,4 @@
-baseURL = "https://mauriciovancine.github.io/"
+baseURL = "https://mauriciovancine.github.io"
 theme = "hugo-apero"
 languageCode = "pt-br"
 title = "Maurício Vancine"
@@ -13,6 +13,11 @@ paginate = 10
 preserveTaxonomyNames = true
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\\.md$"]
 enableEmoji = true
+
+# Permalinks
+[permalinks]
+  blog = "/blog/:year-:month-:slug/"
+  talk = "/talk/:filename/"
 
 [markup]
   defaultMarkdownHandler = "goldmark"
@@ -90,16 +95,16 @@ enableEmoji = true
       icon      = "github" # icon name without the 'fa-'
       icon_pack = "fab"
       url       = "https://github.com/mauriciovancine"
-    [[params.social]]
-      icon      = "square" # icon name without the 'fa-'
-      icon_pack = "fas"
+  [[params.social]]
+      icon      = "bluesky" # icon name without the 'fa-'
+      icon_pack = "fab"
       url       = "https://bsky.app/profile/mauriciovancine.bsky.social"
   [[params.social]]
       icon      = "mastodon" # icon name without the 'fa-'
       icon_pack = "fab"
       url       = "https://mastodon.social/@mauriciovancine"
   [[params.social]]
-      icon      = "twitter" # icon name without the 'fa-'
+      icon      = "x-twitter" # icon name without the 'fa-'
       icon_pack = "fab"
       url       = "https://twitter.com/mauriciovancine"
   [[params.social]]

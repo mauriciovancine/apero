@@ -25,6 +25,9 @@ sidebar:
   author: "The R Markdown Team @RStudio"
   text_link_label: Subscribe via RSS
   text_link_url: /index.xml
+  categories_link: true
+  series_link: true
+  tags_link: true
   show_sidebar_adunit: true # show ad container
 
 # set up common front matter for all pages inside blog/
@@ -35,7 +38,7 @@ cascade:
   show_comments: true # see site config to choose Disqus or Utterances
   # for single-sidebar layout
   sidebar:
-    text_link_label: Veja os posts recentes
+    text_link_label: View recent posts
     text_link_url: /blog/
     show_sidebar_adunit: false # show ad container
 ---
