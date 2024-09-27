@@ -1,15 +1,15 @@
 {
     "dialog-state": {
-        "query": "draft: false",
+        "query": "By {{ .Params.author }}",
         "path": "",
         "regex": false,
-        "caseSensitive": false,
+        "caseSensitive": true,
         "wholeWord": false,
         "filePatterns": [],
         "useGitGrep": true,
         "excludeGitIgnore": false,
         "excludeFilePatterns": [],
-        "resultsCount": 29,
+        "resultsCount": 13,
         "errorCount": 0,
         "replaceErrors": "",
         "projectRelative": true
