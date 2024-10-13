@@ -190,6 +190,11 @@ enableEmoji = true
     title = ""
     url = "https://mauriciovancine.github.io/cv/cv-academic.pdf"
     weight = 7
+  [[menu.header]]
+    name = "Resumé"
+    title = ""
+    url = "https://mauriciovancine.github.io/resume/resume.pdf"
+    weight = 7
     
   # Configure footer  
   [[menu.footer]]
