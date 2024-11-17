@@ -38,7 +38,7 @@ enableEmoji = true
   description = "Website pessoal de Maurício Vancine."
   favicon = "/img/favicon.ico"
   logo = "/img/favicon.png"
-  mainSections = ["blog", "project", "talk", "teaching", "publication"]
+  mainSections = ["about", "blog", "project", "talk", "teaching", "publication"]
   navallcaps = true
   # show/hide social icons in site header & footer
   # configure social icons and links below in [[params.social]]

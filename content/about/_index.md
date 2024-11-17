@@ -1,11 +1,12 @@
 ---
-cascade:
-  headless: true
+title: "Olá! Bem-vindos!"
 description: |
   Website pessoal de Maurício Vancine.
 show_header: true
 sidebar_left: false
-title: Olá! Bem-vindos!
+headless: false
+cascade:
+  headless: true
 ---
 
 ** index doesn't contain a body, just front matter above.
