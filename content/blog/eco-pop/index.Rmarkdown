@@ -1,0 +1,29 @@
+---
+title: "Ecologia de populações"
+subtitle: "Um pequeno manual para entender a diversidade beta"
+summary: "Um pequeno manual para entender a diversidade beta"
+author: Maurício Vancine
+date: "2023-07-10"
+publishDate: r`Sys.time()`
+lastUpdated: r`Sys.time()`
+layout: single-sidebar
+slug: eco-div-beta
+links:
+categories:
+  - Blog
+tags:
+  - Geoprocessamento
+  - Geoespacial
+  - R
+  - Distância
+featured: yes
+format: hugo
+draft: true
+---
+
+```{r setup, echo=FALSE, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(knitr)
+```
+
+https://cbs.umn.edu/populus

@@ -1,0 +1,58 @@
+---
+title: Principais revistas de ecologia
+subtitle: "Lista das principais revistas de ecologia"
+summary: "Lista das principais revistas de ecologia"
+author: Maurício Vancine
+date: "2025-01-22"
+publishDate: r`Sys.time()` 
+lastUpdated: r`Sys.time()`
+layout: single-sidebar
+slug: pub-revistas-eco
+links:
+categories:
+  - Blog
+tags:
+  - Revistas ecologia
+  - Compilação
+featured: yes
+format: hugo
+draft: true
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(knitr)
+
+knitr::opts_chunk$set(eval=TRUE, 
+                      echo=FALSE,
+                      fig.align = "center")
+
+options(htmltools.dir.version = TRUE)
+
+htmltools::tagList(
+    xaringanExtra::use_clipboard(
+        button_text = "<i class=\"fa fa-clipboard\"></i> Copiar Código",
+        success_text = "<i class=\"fa fa-check\" style=\"color: #90BE6D\"></i> Copiado!",
+    ),
+    rmarkdown::html_dependency_font_awesome()
+)
+```
+
+## Contextualização
+
+Cara, publicar é muito complicado... Dentre as diversas tarefas, uma delas é achar uma revista que encaixe seu artigo. Pensando nisso, comecei a compilar algumas revistas e informações para ajudar.
+
+## Principais revistas de ecologia
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+da <- readr::read_csv("/home/mude/data/github/mauriciovancine/apero/content/blog/pub-revistas-eco/pub_revistas_eco.csv")
+da$Link <- paste0('<a target=_blank href=', da$Link, '>', "link", '</a>')
+
+DT::datatable(da,
+              extensions = 'Buttons',
+              escape = FALSE,
+              options = list(dom = 'Blfrtip', 
+                             buttons = c('copy', 'csv', 'excel', 'pdf', 'print'),
+                             lengthMenu = list(c(10,25,50,-1),
+                                               c(10,25,50,"All"))))
+```

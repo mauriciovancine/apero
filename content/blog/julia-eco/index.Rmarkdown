@@ -1,0 +1,63 @@
+---
+title: Usando julia na Ecologia
+subtitle: "Introdução à linguagem Julia para Ecologia"
+summary: "Introdução à linguagem Julia para Ecologia"
+author: Maurício Vancine, Diogo Provete, Gustavo Paterno
+date: "2022-07-12"
+publishDate: r`Sys.time()`
+lastUpdated: r`Sys.time()`
+layout: single-sidebar
+slug: julia-eco
+links:
+categories:
+  - Blog
+tags:
+  - julia
+  - linguagem de programacao
+  - ecologia
+featured: yes
+format: hugo
+draft: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+https://ferrolho.github.io/blog/2019-01-26/how-to-install-julia-on-ubuntu
+
+https://www.youtube.com/playlist?list=PL7_6d0kShQYbdwyGD2WpBp0jCpUfMIgjb
+
+https://ecojulia.org/
+ 
+
+```{julia eval=FALSE, include=FALSE}
+# load 
+using Pkg
+
+# install packages
+Pkg.add("DataFrames")
+Pkg.add("CSV")
+Pkg.add("Gadfly")
+
+# load packages
+using CSV
+using DataFrames
+using Gadfly
+
+# import CSV
+df = CSV.read("/home/mude/Downloads/ATLANTIC_AMPHIBIANS_sites_fix.csv", DataFrame)
+df
+
+# graphic
+plot(df, 
+x=:year_start, 
+y=:species_number, 
+# Gadfly.Geom.point(), 
+Gadfly.Geom.line())
+```
+
+## Contextualização
+
+
+## Para se aprofundar

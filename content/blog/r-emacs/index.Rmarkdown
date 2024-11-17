@@ -1,0 +1,83 @@
+---
+title: "R no Emacs"
+subtitle: "Configuração e uso do R no Emacs"
+summary: "Configuração e uso do R no Emacs"
+author: Maurício Vancine
+date: "2024-05-01"
+publishDate: r`Sys.time()`
+lastUpdated: r`Sys.time()`
+layout: single-sidebar
+slug: r-emacs
+links:
+categories: 
+  - Blog
+tags:
+  - R
+  - Emacs
+featured: yes
+format: hugo
+draft: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Contextualização
+
+Há tempos que o RStudio não tem funcionado muito bem para mim. Ele "pesa demais" apenas para rodar o R. Então resolvi usar algo mais simples. Dentre as várias opções para rodar o R, como Sublime Text ou Neovim, resolvi seguir o penoso caminho do [Emacs](https://www.gnu.org/software/emacs/). 
+
+Emacs é um troço que excede minhas limitadas capacidades de programação, mas como faz tempo que não aprendo algo novo e como vi dois ecólogos brabos no R (Ben Bolker e Paulo Inácio Prado) usando, pensei, por que não tentar?
+
+Claro, de início, só frustração, como foi aprender R para mim lá em 2011... Mas essa é uma tentativa de me forçar a usar e aprender algo novo. Nada pior que o marasmo da vida.
+
+## Emacs
+
+O Emacs é da GNU. Nele a gente tenta não usa o mouse, ou pelo menos não deveria. Nele é possível rodar quase qualquer coisa, como python e Julia, linguagens que eu quero aprender melhor nos próximos anos.
+
+## Instalando
+
+Vamos instalar ele. Aqui, estou usando Linux, mas tudo o que eu fizer deve ser semelhante no Windows ou no MacOS.
+
+## R no Emacs
+
+Vamos configurar o Emacs para rodar o R.
+
+## Agora começa a labuta
+
+
+## Atalhos
+
+http://www.leg.ufpr.br/~paulojus/restrito/dicas/node21.html
+
+
+https://opensource.com/article/20/5/r-emacs-data-science
+
+
+https://plantarum.ca/2020/06/16/emacs-tutorial-01/
+https://plantarum.ca/2020/06/17/emacs-tutorial-02/
+https://plantarum.ca/tutorials/emacs-tutorial-03/
+https://ess.r-project.org/index.php?Section=home
+
+https://www.youtube.com/watch?v=M9jNksn3pNM
+
+https://confunguido.github.io/blog/20190317_emacs_for_R.html
+
+https://youtu.be/CvKywSV3fiI?si=GI-r7KPPFXnbCcND
+https://youtu.be/48JlgiBpw_I?si=YX6vSDz_7Vtzt1KJ
+https://youtu.be/oNmbldRJqZM?si=qyJZJ2xy52N2v9sU
+
+http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/
+https://www.gnu.org/savannah-checkouts/gnu/emacs/emacs.html
+https://www2.stat.duke.edu/courses/Spring09/sta244/computing/R-ESS.html
+https://www.r-bloggers.com/2018/06/using-r-with-emacs-and-ess/
+https://www.youtube.com/watch?v=So1LYzSk9o0
+https://gist.github.com/davebraze/ff95762bea2868f52942c0bb2d247b29
+https://www.youtube.com/playlist?list=PLwc48KSH3D1Onsed66FPLywMSIQmAhUYJ
+
+
+https://debxp.org/por-que-aprender-emacs-em-2021/
+
+https://terminalroot.com.br/2023/12/guia-definitivo-do-gnu-emacs-para-iniciantes.html
+
+

@@ -1,0 +1,57 @@
+---
+title: Controle de versão com git 
+subtitle: "Principais conceitos de controle de versão usando git"
+summary: "Principais conceitos de controle de versão usando git"
+author: Maurício Vancine
+date: "2022-07-12"
+publishDate: r`Sys.time()`
+lastUpdated: r`Sys.time()`
+layout: single-sidebar
+slug: git-intro
+links:
+categories:
+  - Blog
+tags:
+  - Controle de versão
+  - git
+featured: yes
+format: hugo
+draft: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(knitr)
+library(vembedr)
+```
+
+## Contextualização
+
+Nas [disciplinas](/teaching) que ofereço, geralmente eu começo com uma parte de controle de versão usando [git](https://git-scm.com/). Em 2021 ofereci um [minicurso](http://localhost:4321/teaching/workshop-git/) para o pessoal da UFRPE. Falando mais recentemente com o [Prof. Diogo Provete](http://diogoprovete.weebly.com/) sobre disciplinas e como ensinar git, chegamos à conclusão que é fundamental ter um material didático sobre esse assunto.
+
+Este tutorial aborda os conceitos gerais de controle de versão usando o [git](https://git-scm.com/) e sua integração com o [RStudio](https://posit.co/download/rstudio-desktop/) e [GitHub](https://github.com/).
+
+## Controle de versão
+
+## git
+
+## Instalação
+
+## Terminal bash e desktop
+
+## Estágios do controle de versão
+
+## git init: começando
+
+## git status: verificando
+
+## git add: adicionando
+
+## git commit: guardando
+
+## git push: guardando
+
+## Para se aprofundar
+
+Aqui ofereço apenas os conceitos básicos e de forma prática. Para se aprofundar no tema, sugiro a leitura dos livros listados abaixo.

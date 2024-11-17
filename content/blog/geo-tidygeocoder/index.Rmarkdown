@@ -1,0 +1,36 @@
+---
+title: Controle de versão com git 
+subtitle: "Introdução aos principais conceitos sobre controle de versão usando git"
+summary: "Introdução aos principais conceitos sobre controle de versão usando git"
+author: Maurício Vancine, Diogo Provete, Gustavo Paterno
+date: "2022-07-12"
+publishDate: r`Sys.time()`
+lastUpdated: r`Sys.time()`
+layout: single-sidebar
+slug: git-intro
+links:
+categories:
+  - Blog
+tags:
+  - Controle de versão
+  - git
+featured: yes
+format: hugo
+draft: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(knitr)
+library(vembedr)
+```
+
+## Contextualização
+
+Encontrar coordenadas para endereços e endereços para coordenadas pode ser uma demanda recorrente, principalmente para quem trabalha com dados geoespaciais. Havia formas simples de se fazer isso num passado remoto, mas depois da necessidade de API's do Google, as coisas se complicaram... Mas essa solução veio para facilitar nossa vida.
+
+Abaixo apresento o pacote [tidygeocoder](https://jessecambon.github.io/tidygeocoder/index.html).
+
+## Códigos
+

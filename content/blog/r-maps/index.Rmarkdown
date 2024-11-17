@@ -1,0 +1,34 @@
+---
+title: "IDEs para R"
+subtitle: "Descrição dos principais IDEs para R"
+summary: "Descrição dos principais IDEs para R"
+author: Maurício Vancine
+date: "2024-05-01"
+publishDate: r`Sys.time()`
+lastUpdated: r`Sys.time()`
+layout: single-sidebar
+slug: r-ide
+links:
+categories: 
+  - Blog
+tags:
+  - R
+  - IDE
+  - RStudio
+  - Positron
+  - Sublime
+  - Emacs
+featured: yes
+format: hugo
+draft: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Contextualização
+
+Hhttps://walker-data.com/mapgl/index.html
+
+

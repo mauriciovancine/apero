@@ -1,0 +1,69 @@
+---
+title: Dinâmica de mudança de cobertura da terra e Diagrama de Sankey
+subtitle: "Contabilização das mudanças de quantidade e área de classes de cobertura da terra ao longo do tempo e sua representação através de um Diagrama de Sankey"
+summary: "Contabilização das mudanças de quantidade e área de classes de cobertura da terra ao longo do tempo e sua representação através de um Diagrama de Sankey" 
+author: Maurício Vancine
+date: "2022-08-27"
+publishDate: r`Sys.time()`
+lastUpdated: r`Sys.time()`
+layout: single-sidebar
+slug: geo-cob-terra-sankey
+links:
+categories:
+  - Blog
+tags:
+  - Geoprocessamento
+  - Mudança de cobertura da terra
+  - R
+  - MapBiomas
+featured: yes
+format: hugo
+---
+
+
+
+## Contextualização
+
+A coleção 7 do [MapBiomas](https://mapbiomas.org/) acaba de ser lançada com grandes melhorias em diversos aspectos e aumentando a janela temporal de 1985 a 2021. O MapBiomas é projeto composto por uma rede colaborativa, formada por ONGs, universidades e startups de tecnologia que produz mapeamentos anuais da cobertura e uso do solo, além de validação e elaboração de relatórios de desmatamento no Brasil.
+
+Os mapas anuais de cobertura da terra são produzidos a partir da classificação pixel a pixel de imagens das satélites Landsat. Todo processo é feito com algoritmos de aprendizagem de máquina através da plataforma Google Earth Engine, descrito nessa figura que surrupiei do site.
+
+![](img/metodo.jpeg)
+Com toda certeza a parte mais interessante do MapBiomas é a analisar a variabilidade temporal. Pensando nisso, e como tive que escrever um script para ajudar o Francielson Barbosa, uma pessoa que cooriento, que está usando esses dados para entender as dinâmicas da paisagem em duas bacias do Piauí, aproveitei para escrever esse post.
+
+Esses scrits são modificações de um trabalho que estamos submetendo do Vítor Abner Borges Dutra, onde analisamos a dinâmica da paisagem em algumas bacias hidrográficas na Amazônia Oriental no Estado do Pará. Eu achei os resultados muito interessantes que pensei que seria muito legal se outras pessoas pudessem utilizar para analisar sua própria região. Assim que ele ser publicado, eu coloco um link [aqui]().
+
+Claro, vou fazer tudo no R e para Rio Claro/SP. Vou mostrar duas análises: uma tabela que mostra as mudanças das classes entre dois anos e como representar isso no formato de um [Diagrama de Sankey](https://en.wikipedia.org/wiki/Sankey_diagram).
+
+## Dados
+
+Vamos iniciar instalando e carregando os pacotes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

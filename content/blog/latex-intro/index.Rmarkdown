@@ -1,0 +1,36 @@
+---
+title: Introdução ao LaTeX 
+subtitle: "Principais conceitos de LaTeX"
+summary: "Principais conceitos de LaTeX"
+author: Maurício Vancine
+date: "2022-07-12"
+publishDate: r`Sys.time()`
+lastUpdated: r`Sys.time()`
+layout: single-sidebar
+slug: latex-intro
+links:
+categories:
+  - Blog
+tags:
+  - LaTeX
+featured: yes
+format: hugo
+draft: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(knitr)
+library(vembedr)
+```
+
+## Contextualização
+
+Nas [disciplinas](/teaching) que ofereço, geralmente eu começo com uma parte de controle de versão usando [git](https://git-scm.com/). Em 2021 ofereci um [minicurso](http://localhost:4321/teaching/workshop-git/) para o pessoal da UFRPE. Falando mais recentemente com o [Prof. Diogo Provete](http://diogoprovete.weebly.com/) sobre disciplinas e como ensinar git, chegamos à conclusão que é fundamental ter um material didático sobre esse assunto.
+
+Este tutorial aborda os conceitos gerais de controle de versão usando o [git](https://git-scm.com/) e sua integração com o [RStudio](https://posit.co/download/rstudio-desktop/) e [GitHub](https://github.com/).
+
+Aqui ofereço apenas os conceitos básicos e de forma prática. Para se aprofundar no tema, sugiro a leitura dos livros listados abaixo.
+
+[Curso LaTeX](https://www.youtube.com/playlist?list=PL-20Z1XFWKR16mFCLzfPiNYuu72ibrUt6)

@@ -1,0 +1,145 @@
+---
+title: Distância de pontos a linhas
+subtitle: "Cálculo da distância de pontos a linhas no R e no QGIS"
+summary: "Cálculo da distância de pontos a linhas no R e no QGIS"
+author: Maurício Vancine
+date: "2022-07-10"
+publishDate: r`Sys.time()`
+lastUpdated: r`Sys.time()`
+layout: single-sidebar
+slug: eco-espa-distancia-ponto-linha
+links:
+categories:
+  - Blog
+tags:
+  - Geoprocessamento
+  - Geoespacial
+  - R
+  - Distância
+featured: yes
+format: hugo
+---
+
+
+
+## Contextualização
+
+Há um certo tempo, o [Prof. Pavel Dodonov da UFBA](https://spatialecologyufba.wordpress.com/) e autor do blog [Mais Um Blog de Ecologia e Estatística](https://anotherecoblog.wordpress.com/) me mandou um email pedindo ajuda com um problema muito interessante. Nas palavras dele: "Tenho um conjunto de pontos e uma linha representando uma estrada, e quero projetar os pontos sobre a estrada, ou seja, criar sobre a estrada um conjunto de pontos que sejam o mais próximos dos pontos originais."
+
+Ele mesmo achou a solução no QGIS neste [link](https://gis.stackexchange.com/questions/246541/creating-points-projected-on-line-using-qgis) e enviou a solução usando o "Geometry by expression" do "Processing Toolbox", com a expressão:
+
+
+``` r
+closest_point( geometry(get_feature('vetor_estrada','ID',1)), $geometry)
+```
+
+Eu gosto muito do QGIS. Mas prefiro o R para fazer esses tipos de análises porque gosto de ter um script que me recorde dos passos realizados. Além disso sou preguiçoso para lembrar dos cliques e caminhos para ter o mesmo resultado no QGIS.
+
+Olhando para esse problema e pensando que há muitas aplicações em Ecologia Espacial, como distância de registros de animais ou plantas de um transecto, efeito de atropelamento, distância de floresta para corpos d'água, etc., decidi procurar uma solução em R. Este post é a solução que encontrei.
+
+## Pacotes
+
+Vamos usar aqui os pacotes: `dplyr` para manipular dados tabulares, `ggplot2` para gráficos, `geobr` para limites geográficos (lembrando que atualmente para instalar esse pacote precisa ser do [GitHub](https://github.com/ipeaGIT/geobr)), `sf` para manipular dados vetoriais, `raster` para manipular dados raster, `geosphere` para as distância perpendiculares, `SpatialKDE` para densidade de kernel e o `tmap` para fazer os mapas. Vamos aumentar o tempo de download também.
+
+
+``` r
+# pacotes
+library(dplyr)
+library(ggplot2)
+library(geobr)
+library(sf)
+library(raster)
+library(geosphere)
+library(SpatialKDE)
+library(tmap)
+
+# opcoes
+options(timeout = 600) # aumentar o tempo de download
+```
+
+## Download dos dados
+
+Vamos começar com um conjunto de dados para fazer essas análises. Mudando um pouco o foco do problema e contextualizando, eu vou usar o centroide de lagos e lagoas para as estradas dos município de Rio Claro/SP. Assim, minha pergunta seria quais lagos e lagoas estão mais sugeitas a atropelamentos de anfíbios e ainda, quais dessas estariam sofrendo mais com a interferência sonora na vocalização de anfíbios.
+
+Os dados de lagoas, vou baixar da [Fundação Brasileira de Desenvolvimento Sustentável (FBDS)](http://geo.fbds.org.br/).
+
+
+``` r
+# diretorio
+path <- "/home/mude/data/github/mauriciovancine/apero/content/blog/eco-espa-distancia-ponto-linha/data/"
+```
+
+
+``` r
+# download de dados dos lagos e lagoas
+for(i in c(".dbf", ".prj", ".shx", ".shp")){
+    download.file(url = paste0("http://geo.fbds.org.br/SP/RIO_CLARO/HIDROGRAFIA/SP_3543907_MASSAS_DAGUA", i), 
+                  destfile = paste0(path, "SP_3543907_MASSAS_DAGUA", i), mode = "wb")
+}
+```
+
+Agora vamos fazer o download das rodovidas federais do [Departamento Nacional de Infraestrutura de Transportes (DNIT)](https://servicos.dnit.gov.br/dnitcloud/index.php/s/oTpPRmYs5AAdiNr?path=%2FSNV%20Bases%20Geom%C3%A9tricas%20(2013-Atual)%20(SHP)).
+
+
+``` r
+# download de dados das estradas
+download.file(url = "https://servicos.dnit.gov.br/dnitcloud/index.php/s/oTpPRmYs5AAdiNr/download?path=%2FSNV%20Bases%20Geom%C3%A9tricas%20(2013-Atual)%20(SHP)&files=202206A.zip", 
+              destfile = paste0(path, "rodovia.zip"), mode = "wb")
+
+# unzip
+unzip(zipfile = paste0(path, "rodovia.zip"), exdir = path)
+```
+
+## Importar dados para o R
+
+Vamos primeiramente importar dados do limite de Rio Claro/SP e reprojetar para o sistema geográfico com Datum SIRGAS2000. 
+
+
+``` r
+# download de dados para o limite de Rio Claro/SP
+rio_claro <- geobr::read_municipality(code_muni = 3543907, year = 2020, showProgress = FALSE) |> 
+    sf::st_transform(crs = 4674) |> 
+    dplyr::mutate(id = 1) |> 
+    dplyr::select(id)
+
+# mapa
+tm_shape(rio_claro) +
+    tm_polygons()
+```
+
+<img src="index_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+
+Agora vamos importar esses dados para o R. Primeiro, vamos importar os dados de lagos/lagoas.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,31 @@
+---
+title: CV usando LaTeX 
+subtitle: "CV usando LaTeX"
+summary: "CV usando LaTeX"
+author: Maurício Vancine
+date: "2022-07-12"
+publishDate: r`Sys.time()`
+lastUpdated: r`Sys.time()`
+layout: single-sidebar
+slug: latex-intro
+links:
+categories:
+  - Blog
+tags:
+  - LaTeX
+featured: yes
+format: hugo
+draft: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(knitr)
+library(vembedr)
+```
+
+## Contextualização
+
+
+https://robinwinslow.uk/moderncv

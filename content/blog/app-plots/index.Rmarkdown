@@ -1,0 +1,51 @@
+---
+title: Apps de plots e mapas
+subtitle: "Lista dos principais de gráficos"
+summary: "Lista dos principais de gráficos"
+author: Maurício Vancine
+date: "2025-08-22"
+publishDate: r`Sys.time()` 
+lastUpdated: r`Sys.time()`
+layout: single-sidebar
+slug: eco-dados-biodiversidade
+links:
+categories:
+  - Blog
+tags:
+  - Dados Biológicos
+  - Compilação
+featured: yes
+format: hugo
+draft: true
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(knitr)
+
+knitr::opts_chunk$set(eval=TRUE, 
+                      echo=FALSE,
+                      fig.align = "center")
+
+options(htmltools.dir.version = TRUE)
+
+htmltools::tagList(
+  xaringanExtra::use_clipboard(
+    button_text = "<i class=\"fa fa-clipboard\"></i> Copiar Código",
+    success_text = "<i class=\"fa fa-check\" style=\"color: #90BE6D\"></i> Copiado!",
+  ),
+  rmarkdown::html_dependency_font_awesome()
+)
+```
+
+## Contextualização
+
+https://www.graphica.app
+https://app.flourish.studio/projects
+http://www.gnuplot.info
+https://plotly.com
+https://labplot.kde.org
+https://veusz.github.io
+https://scidavis.sourceforge.net
+
+
