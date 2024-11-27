@@ -13,8 +13,8 @@ doi: https://doi.org/10.1098/rspb.2022.0397
 publishDate: "2022-04-01"
 publication: "*Proceedings Royal Society B*, 289, 20220397"
 publication_short: 'Proceedings Royal Society B'
-summary: "Avaliamos o viés de amostragem e modelagmos as distribuições de morcegos hospedeiros dos Sarbecovírus baseados em relação climáticas e de paisagem e projetamos para cenários futuros para encontrar adensamentos desses hospedeiros"
-subtitle: "Avaliamos o viés de amostragem e modelagmos as distribuições de morcegos hospedeiros dos Sarbecovírus baseados em relação climáticas e de paisagem e projetamos para cenários futuros para encontrar adensamentos desses hospedeiros"
+summary: "Avaliamos o viés de amostragem e modelamos as distribuições de morcegos hospedeiros dos Sarbecovírus baseados em relação climáticas e de paisagem e projetamos para cenários futuros para encontrar adensamentos desses hospedeiros"
+subtitle: "Avaliamos o viés de amostragem e modelamos as distribuições de morcegos hospedeiros dos Sarbecovírus baseados em relação climáticas e de paisagem e projetamos para cenários futuros para encontrar adensamentos desses hospedeiros"
 featured: yes
 image:
   caption: ''

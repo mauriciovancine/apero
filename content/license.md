@@ -6,7 +6,23 @@ show_title_as_headline: true
 title: Licença
 ---
 
-Meus [posts](/post/) são distribuídos sob a licença [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
+Meus [posts](/post/), [palestras](/talk/) e [ensino](/teaching/) são distribuídos sob a licença [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
+
+Você tem o direito de:
+
+- Compartilhar — copiar e redistribuir o material em qualquer suporte ou formato para qualquer fim, mesmo que comercial.
+
+- Adaptar — remixar, transformar, e criar a partir do material para qualquer fim, mesmo que comercial.
+
+- O licenciante não pode revogar estes direitos desde que você respeite os termos da licença.
+
+De acordo com os termos seguintes: 
+
+- Atribuição — Você deve dar o crédito apropriado , prover um link para a licença e indicar se mudanças foram feitas. Você deve fazê-lo em qualquer circunstância razoável, mas de nenhuma maneira que sugira que o licenciante apoia você ou o seu uso.
+
+- CompartilhaIgual — Se você remixar, transformar, ou criar a partir do material, tem de distribuir as suas contribuições sob a mesma licença que o original.
+
+- Sem restrições adicionais — Você não pode aplicar termos jurídicos ou medidas de caráter tecnológico que restrinjam legalmente outros de fazerem algo que a licença permita.
 
 <center>
 <i class="fab fa-creative-commons fa-2x"></i><i class="fab fa-creative-commons-by fa-2x"></i><i class="fab fa-creative-commons-sa fa-2x"></i>

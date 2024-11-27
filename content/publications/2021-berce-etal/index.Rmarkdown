@@ -15,8 +15,8 @@ doi: https://doi.org/10.1093/jmammal/gyab099
 publishDate: "2021-10-01"
 publication: "*Journal of Mammalogy*, 102(5), 1298–1308"
 publication_short: "Journal of Mammalogy"
-summary: "Predizemos a expansão da distribuição e a potencial sobresição geográfico entre espécis de Callithrix nos Biomas da Mata Atlântica e Cerraso e discutimos estratégias de manejo."
-subtitle: "Predizemos a expansão da distribuição e a potencial sobresição geográfico entre espécis de Callithrix nos Biomas da Mata Atlântica e Cerraso e discutimos estratégias de manejo."
+summary: "Usamos modelos de distribuição de espécies (SDMs) e análise de sobreposição de nicho para estimar potenciais áreas de conflito entre o javali e o pudu nativo do sul (Pudu puda), que é um bioindicador do estado de conservação da floresta dentro do Parque Nacional Nahuel Huapi (NHNP), Argentina"
+subtitle: "Usamos modelos de distribuição de espécies (SDMs) e análise de sobreposição de nicho para estimar potenciais áreas de conflito entre o javali e o pudu nativo do sul (Pudu puda), que é um bioindicador do estado de conservação da floresta dentro do Parque Nacional Nahuel Huapi (NHNP), Argentina"
 featured: yes
 image:
   caption: ''

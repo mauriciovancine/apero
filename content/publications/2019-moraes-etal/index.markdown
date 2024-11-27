@@ -14,8 +14,8 @@ doi: https://doi.org/10.1016/j.gecco.2019.e00706
 publishDate: "2019-10-01"
 publication: "*Global Ecology and Conservation*, 20, e00706.06"
 publication_short: 'Global Ecology and Conservation'
-summary: "Predizemos a expansão da distribuição e a potencial sobresição geográfico entre espécis de Callithrix nos Biomas da Mata Atlântica e Cerraso e discutimos estratégias de manejo"
-subtitle: "Predizemos a expansão da distribuição e a potencial sobresição geográfico entre espécis de Callithrix nos Biomas da Mata Atlântica e Cerraso e discutimos estratégias de manejo"
+summary: "Predizemos a expansão da distribuição e a potencial sobresição geográfico entre espécis de Callithrix nos Biomas da Mata Atlântica e Cerrado e discutimos estratégias de manejo"
+subtitle: "Predizemos a expansão da distribuição e a potencial sobresição geográfico entre espécis de Callithrix nos Biomas da Mata Atlântica e Cerrado e discutimos estratégias de manejo"
 featured: yes
 image:
   caption: ''

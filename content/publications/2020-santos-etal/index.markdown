@@ -14,8 +14,8 @@ doi: https://doi.org/10.1111/ddi.13007
 publishDate: "2020-02-01"
 publication: "*Diversity and Distributions*, 26(2), 196-208"
 publication_short: 'Diversity and Distributions'
-summary: "Predizemos a expansão da distribuição e a potencial sobresição geográfico entre espécis de Callithrix nos Biomas da Mata Atlântica e Cerraso e discutimos estratégias de manejo"
-subtitle: "Predizemos a expansão da distribuição e a potencial sobresição geográfico entre espécis de Callithrix nos Biomas da Mata Atlântica e Cerraso e discutimos estratégias de manejo"
+summary: "Avaliamos os padrões de distribuição da riqueza de espécies de borboletas frugívoras na Mata Atlântica, considerando a contribuição relativa do clima e da paisagem, e recomendamos diretrizes de conservação para o grupo"
+subtitle: "Avaliamos os padrões de distribuição da riqueza de espécies de borboletas frugívoras na Mata Atlântica, considerando a contribuição relativa do clima e da paisagem, e recomendamos diretrizes de conservação para o grupo"
 featured: yes
 image:
   caption: ''

@@ -14,8 +14,8 @@ doi: https://doi.org/10.1590/1676-0611-bn-2022-1363
 publishDate: "2022-01-22"
 publication: "*Ecological Informatics*, 68, 101570"
 publication_short: 'Ecological Informatics'
-summary: "Analisamos como as mudanças climáticas afetam a distribuição de duas espécies de mamíferos marsupiais aquáticos na América do Sul"
-subtitle: "Analisamos como as mudanças climáticas afetam a distribuição de duas espécies de mamíferos marsupiais aquáticos na América do Sul"
+summary: "Este estudo responde a cinco perguntas principais sobre a diversidade, distribuição, impacto, adaptação e futuro dos mamíferos silvestres no Estado de São Paulo"
+subtitle: "Este estudo responde a cinco perguntas principais sobre a diversidade, distribuição, impacto, adaptação e futuro dos mamíferos silvestres no Estado de São Paulo"
 featured: yes
 image:
   caption: ''

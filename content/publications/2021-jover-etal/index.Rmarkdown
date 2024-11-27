@@ -14,8 +14,8 @@ doi: https://doi.org/10.1016/j.aquabot.2021.103395
 publishDate: "2021-06-01"
 publication: "*Aquatic Botany*, 172, 103395"
 publication_short: "Aquatic Botany"
-summary: "Predizemos a expansão da distribuição e a potencial sobresição geográfico entre espécis de Callithrix nos Biomas da Mata Atlântica e Cerraso e discutimos estratégias de manejo."
-subtitle: "Predizemos a expansão da distribuição e a potencial sobresição geográfico entre espécis de Callithrix nos Biomas da Mata Atlântica e Cerraso e discutimos estratégias de manejo."
+summary: "Avaliamos a distribuição potencial, limites de tolerância e nicho de similaridade de macroalgas epífitas e hospedeiras da plataforma marinha de Cuba"
+subtitle: "Avaliamos a distribuição potencial, limites de tolerância e nicho de similaridade de macroalgas epífitas e hospedeiras da plataforma marinha de Cuba"
 featured: yes
 image:
   caption: ''
