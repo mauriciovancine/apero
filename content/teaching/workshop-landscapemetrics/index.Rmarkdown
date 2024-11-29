@@ -26,9 +26,9 @@ draft: false
 
 ## Descrição
 
-Tem o intuito de oferecer uma introdução teórica e prática sobre o cálculo de métricas de paisagem utilizando a linguagem R através do pacote *landscapemetrics*. Primeiramente são apresentados os principais conceitos de ecologia da paisagem, métricas de paisagem, geoprocessamento, dados geoespaciais, linguagem R e detalhes do pacote *landscapmetrics*.
+O curso tem o intuito de oferecer uma introdução teórica e prática sobre o cálculo de métricas de paisagem categóricas (composição e configuração) utilizando a linguagem R através do pacote *landscapemetrics*. Primeiramente são apresentados os principais conceitos de ecologia da paisagem, métricas de paisagem, geoprocessamento, dados geoespaciais, linguagem R e detalhes do pacote *landscapmetrics*.
 
 ## Oferecimento
 
-1. [Laboratório de Ecologia Espacial e Conservação (LEEC)](https://leec.eco.br). (2022). Online. Carga horária: 04 h. 
-2. [SynEco - I Simpósio Brasileiro de Síntese Ecológica](https://reefsyn.weebly.com/syneco.html). (2024). Santa Maria, RS, Brasil. Carga horária: 02:30 h. 
+1. [Laboratório de Ecologia Espacial e Conservação (LEEC)](https://leec.eco.br). (2022). Online. Carga horária: 04:00 h. 
+2. [SynEco - I Simpósio Brasileiro de Síntese Ecológica](https://reefsyn.weebly.com/syneco.html). (2024). Santa Maria, RS, Brasil. Carga horária: 02:00 h. 
