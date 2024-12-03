@@ -185,6 +185,12 @@ Tonetti, V., Bernardo, R., De Angelo, C., Rosa, M. R., Grohmann C. H., & Ribeiro
 vegetation and implications for conservation](/publications/af-spatiotemporal). 
 *Biological Conservation*, 291, 110499.
 
+1. Barbosa, F. S., <u>**Vancine, M. H.**</u>, Ribeiro, M. C. & Siminski, A. (2024). 
+[Análise espacial da fragmentação da paisagem: um estudo de caso sobre os fragmentos 
+forestais destinados à Reserva Legal em duas bacias hidrográfcas no Estado do 
+Piauí](/publications/frag-pi). *Revista Observatório de la Economía
+Latinoamericana*, 22(11), e7996.
+
 # Livros
 
 1.  Da Silva, F. R., Gonçalves-Souza, T., Paterno, G. B., Provete, D. B., & 
@@ -201,7 +207,7 @@ vegetation and implications for conservation](/publications/af-spatiotemporal-pr
 
 1. <u>**Vancine, M. H.**</u>, Niebuhr B. B., Muylaert R. L., Oshima J. E. F., Tonetti V., 
 Bernardo R., Alves R. S. C., Zanette E. M., Souza V. C., Giovanelli J. G. R., Grohmann C. H., 
-Galetti M., & Ribeiro, M. C. (2023). [ATLANTIC  SPATIAL:  a  data  set  of  landscape, topographic,  
+Galetti M., & Ribeiro, M. C. (2023). [ATLANTIC  SPATIAL:  a  data  set  of  landscape, topographic, 
 hydrologic and  anthropogenic metrics for the Atlantic Forest](/publications/af-spatial-data-paper-preprint). 
 *EcoEvoRxiv*. DOI: https://doi.org/10.32942/X26P58.
 
