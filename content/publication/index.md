@@ -191,6 +191,11 @@ forestais destinados à Reserva Legal em duas bacias hidrográfcas no Estado do
 Piauí](/publications/frag-pi). *Revista Observatório de la Economía
 Latinoamericana*, 22(11), e7996.
 
+1. Marques, R. C. M., <u>**Vancine, M. H.**</u>, Súarez, Y. R., Pereira, J. G., 
+Domingos, J. D., Silva, A. B. B., Pereira, Z. V. [Dinâmica espaço temporal: variações 
+na composição e configuração da vegetação](). *Revista Brasileira de Geografia Física*. 
+*in press*.
+
 # Livros
 
 1.  Da Silva, F. R., Gonçalves-Souza, T., Paterno, G. B., Provete, D. B., & 
