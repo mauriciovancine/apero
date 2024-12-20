@@ -6,6 +6,14 @@ show_title_as_headline: true
 title: Financiamentos
 ---
 
+## Pós-Doutorado
+
+- **Título**: 	Impactos dos efeitos de borda, fogo e mudanças climáticas na composição da vegetação e diversidade funcional em diferentes escalas espaciais na Floresta Amazônica
+- **Agência**: [Fundação de Amparo à Pesquisa do Estado de São Paulo (FAPESP)](https://fapesp.br/)
+- **Universidade**: [Universidade Estadual de Campinas (Unicamp)](https://unicamp.br/)
+- **Bolsa**: [#2024/19865-6]()
+- **Valor**: R$ 316.800,00
+
 ## Doutorado
 
 - **Título**: Estrutura da paisagem como preditor da diversidade taxonômica e funcional de anfíbios na Mata Atlântica
