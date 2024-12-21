@@ -1,5 +1,5 @@
 ---
-title: Usando Julia na Ecologia
+title: Usando julia na Ecologia
 subtitle: "Introdução à linguagem Julia para Ecologia"
 summary: "Introdução à linguagem Julia para Ecologia"
 author: Maurício Vancine, Diogo Provete, Gustavo Paterno
@@ -19,6 +19,15 @@ featured: yes
 format: hugo
 draft: true
 ---
+
+
+
+https://ferrolho.github.io/blog/2019-01-26/how-to-install-julia-on-ubuntu
+
+https://www.youtube.com/playlist?list=PL7_6d0kShQYbdwyGD2WpBp0jCpUfMIgjb
+
+https://ecojulia.org/
+ 
 
 
 

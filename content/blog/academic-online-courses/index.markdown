@@ -4,7 +4,7 @@ subtitle: "Lista de disciplinas de graduação e pós-graduação oferecidas on-
 summary: "Lista de disciplinas de graduação e pós-graduação oferecidas on-line"
 author: Maurício Vancine
 date: "2021-03-07"
-publishDate: r`Sys.time()`
+publishDate: r`Sys.time()` 
 lastUpdated: r`Sys.time()`
 layout: single-sidebar
 slug: academic-online-courses
@@ -85,7 +85,7 @@ Este é um post colaborativo, ficarei feliz demais em receber ajuda para aumenta
 
 ## Agradecimentos
 
-Como forma de agradecimento, vou listando as pessoas que contrinuíram aqui.
+Como forma de agradecimento, vou listando as pessoas que contribuíram aqui.
 
 - [Prof. Thiago Gonçalves-Souza](https://thiagocalvesouza.wixsite.com/ecoffun)
 - [Bea Milz](https://beatrizmilz.com/)

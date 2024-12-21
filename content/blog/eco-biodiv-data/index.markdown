@@ -24,12 +24,6 @@ featured: yes
 format: hugo
 draft: false
 ---
-<script src="{{< blogdown/postref >}}index_files/clipboard-2.0.6/clipboard.min.js"></script>
-<link href="{{< blogdown/postref >}}index_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
-<script src="{{< blogdown/postref >}}index_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
-<script>window.xaringanExtraClipboard(null, {"button":"<i class=\"fa fa-clipboard\"><\/i> Copiar Código","success":"<i class=\"fa fa-check\" style=\"color: #90BE6D\"><\/i> Copiado!","error":"Press Ctrl+C to Copy"})</script>
-<link href="{{< blogdown/postref >}}index_files/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
-<link href="{{< blogdown/postref >}}index_files/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 
 
 

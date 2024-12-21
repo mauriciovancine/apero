@@ -1,20 +1,20 @@
 ---
-title: Usando Julia na Ecologia
-subtitle: "Introdução à linguagem Julia para Ecologia"
-summary: "Introdução à linguagem Julia para Ecologia"
+title: Usando Julia para dados geoespaciais
+subtitle: "Introdução à linguagem Julia para dados geoespaciais"
+summary: "Introdução à linguagem Julia para dados geoespaciais"
 author: Maurício Vancine
 date: "2022-12-21"
 publishDate: r`Sys.time()`
 lastUpdated: r`Sys.time()`
 layout: single-sidebar
-slug: julia-eco
+slug: julia-geospat
 links:
 categories:
   - Blog
 tags:
   - julia
   - linguagem de programacao
-  - ecologia
+  - geoespacial
 featured: yes
 format: hugo
 draft: true
@@ -66,4 +66,3 @@ https://ferrolho.github.io/blog/2019-01-26/how-to-install-julia-on-ubuntu
 https://www.youtube.com/playlist?list=PL7_6d0kShQYbdwyGD2WpBp0jCpUfMIgjb
 
 https://ecojulia.org/
-
