@@ -2,8 +2,8 @@
 title: Gráficos e mapas além do R
 subtitle: "Lista dos principais APPs gratuitos para gráficos e mapas"
 summary: "Lista dos principais APPs gratuitos para gráficos e mapas"
-author: Maurício Vancine
-date: "2025-12-21"
+author: Maurício Vancine 
+date: "2024-12-21"
 publishDate: r`Sys.time()` 
 lastUpdated: r`Sys.time()`
 layout: single-sidebar
