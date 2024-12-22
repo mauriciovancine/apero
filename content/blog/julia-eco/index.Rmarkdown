@@ -3,7 +3,7 @@ title: Usando Julia na Ecologia
 subtitle: "Introdução à linguagem Julia para Ecologia"
 summary: "Introdução à linguagem Julia para Ecologia"
 author: Maurício Vancine
-date: "2022-12-21"
+date: "2025-12-21"
 publishDate: r`Sys.time()`
 lastUpdated: r`Sys.time()`
 layout: single-sidebar
@@ -26,7 +26,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Contextualização
 
-Numa série de três posts [Introdução à linguagem Julia](https://mauriciovancine.github.io/blog/2024-12-julia-intro), [Usando Julia na Ecologia](https://mauriciovancine.github.io/blog/2024-12-julia-eco) e [](https://mauriciovancine.github.io/blog/2024-12-julia-geospat), vou detalhar um pouco das principais características e aplicações da linguagem **Julia** para a Ecologia e para as análises geoespaciais.
+Numa série de três posts, começando por este, [Introdução à linguagem Julia](https://mauriciovancine.github.io/blog/2024-12-julia-intro), seguido por [Usando Julia na Ecologia](https://mauriciovancine.github.io/blog/2024-12-julia-eco) e por fim [Usando Julia para dados geoespaciais](https://mauriciovancine.github.io/blog/2024-12-julia-geospat), vou detalhar um pouco das principais características e aplicações da linguagem **Julia** para a Ecologia e para as análises geoespaciais.
+
+Neste, falo um pouco mais das aplicações da linguagem **Julia** para a Ecologia, algumas bibliotecas e aplicações.
 
 ## Julia na Ecologia
 
@@ -67,3 +69,10 @@ https://www.youtube.com/playlist?list=PL7_6d0kShQYbdwyGD2WpBp0jCpUfMIgjb
 
 https://ecojulia.org/
 
+https://www.youtube.com/watch?v=gRj7E5kYG1I&t=417s
+
+https://poisotlab.github.io/SpeciesDistributionToolkit.jl/v1.2.0/
+
+https://joss.theoj.org/papers/10.21105/joss.02872
+
+https://www.youtube.com/watch?v=R4GzK-by0ac
