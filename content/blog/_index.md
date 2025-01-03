@@ -1,7 +1,7 @@
 ---
 title: Blog
 description: |
-  Este é meu blog, onde compartilho meus aprendizados sobre R, Python, Linux, geoprocessamento, o universo e tudo mais...
+  Este é meu blog, onde compartilho meus aprendizados sobre R, Python, Julia, Linux, geoprocessamento, o universo e tudo mais...
 author: "Maurício Vancine"
 show_post_thumbnail: true
 thumbnail_left: false # for list-sidebar only
@@ -14,7 +14,7 @@ layout: list-sidebar # list, list-sidebar, list-grid
 sidebar: 
   title: Blog
   description: |
-   Este é meu blog, onde compartilho meus aprendizados sobre R, Python, Linux, geoprocessamento, o universo e tudo mais...
+   Este é meu blog, onde compartilho meus aprendizados sobre R, Python, Julia, Linux, geoprocessamento, o universo e tudo mais...
   author: "Maurício Vancine"
   text_link_label:
   text_link_url: /index.xml
