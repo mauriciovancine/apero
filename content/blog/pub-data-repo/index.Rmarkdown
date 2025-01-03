@@ -1,0 +1,44 @@
+---
+title: Principais repositórios de dados para publicação
+subtitle: "Lista dos principais repositórios de dados para publicação"
+summary: "Lista das principais repositórios de dados para publicação"
+author: Maurício Vancine
+date: "2025-01-03"
+publishDate: r`Sys.time()` 
+lastUpdated: r`Sys.time()`
+layout: single-sidebar
+slug: pub-data-repo
+links:
+categories:
+  - Blog
+tags:
+  - Repositório
+  - Conjunto de dados
+  - Ciência aberta
+featured: yes
+format: hugo
+draft: false
+---
+
+## Contextualização
+
+Disponibilizar dados dos artigos publicados é uma ótima forma de aumentar a reprodutibilidade e acesso aos dados. Entretanto, essa é não é uma tarefa muito fácil, principalmente se a intenção a disponibilida de grandes conjuntos de dados.
+
+Para um tabela simples com poucas linhas e colunas a tarefa pode ser realizada no [GitHub](), por exemplo, mas no meu caso, onde eu tinha mais de 250 GB de camadas rasters, a coisa ficou um pouco mais complicada.
+
+Eu optei por disponibilizar os dados no [Zenodo](https://zenodo.org), mas antes de chegar a ele, fiz uma busca de vários repositórios de dados, os quais eu listo aqui.
+
+## Principais repositórios de dados 
+
+Fiz uma tabela com informações sobre os principais repositórios, incluindo detalhes sobre o tamanho do repositório, limites de tamanho de arquivos e quantidade de arquivos.
+
+```{r echo=FALSE, message=FALSE}
+library(tidyverse)
+library(knitr)
+
+pub_repo <- read_csv("/home/mude/data/github/apero/content/blog/pub-data-repo/pub_repositorio_dados.csv", 
+                     col_types = cols())
+kable(pub_repo)
+```
+
+Fonte da imagem: [freepik](https://www.freepik.com/free-vector/server-concept-illustration_5357389.htm?log-in=google#fromView=search&page=1&position=10&uuid=5e151ded-9f1e-4a2d-9671-66c1b46cd933&new_detail=true).

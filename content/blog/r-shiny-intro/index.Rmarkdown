@@ -7,7 +7,7 @@ date: "2025-01-02"
 publishDate: r`Sys.time()`
 lastUpdated: r`Sys.time()`
 layout: single-sidebar
-slug: r-qrcode
+slug: r-shiny-intro
 links:
 categories: 
   - Blog
