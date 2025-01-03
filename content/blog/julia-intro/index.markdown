@@ -27,7 +27,7 @@ Há muito tempo ouço falar, isso desde 2014 ou 2015, que a linguagem **Julia** 
 
 Mas notei algumas tendências muito interessantes de aumento do uso da linguagem **Julia**, principalmente de alguns grupos de pesquisa da Europa, isso na área de Ecologia. Vou tentar fazer uma visão geral através de um material simples para eluciadar alguns pontos sobre essa linguagem.
 
-Numa série de três posts, começando por este, [Introdução à linguagem Julia](https://mauriciovancine.github.io/blog/2024-12-julia-intro), seguido por [Usando Julia na Ecologia](https://mauriciovancine.github.io/blog/2024-12-julia-eco) e por fim [Usando Julia para dados geoespaciais](https://mauriciovancine.github.io/blog/2024-12-julia-geospat), vou detalhar um pouco das principais características e aplicações da linguagem **Julia** para a Ecologia e para as análises geoespaciais.
+Numa série de três posts, começando por este, [Introdução à linguagem Julia](https://mauriciovancine.github.io/blog/2024-12-julia-intro), seguido por [Usando Julia na Ecologia](https://mauriciovancine.github.io/blog/2025-01-julia-eco) e por fim [Usando Julia para dados geoespaciais](https://mauriciovancine.github.io/blog/2025-02-julia-geospat), vou detalhar um pouco das principais características e aplicações da linguagem **Julia** para a Ecologia e para as análises geoespaciais.
 
 ## Desenvolvimento
 
@@ -347,9 +347,12 @@ Os pacotes no **Julia** são fundamentais para expandir as funcionalidades da li
 
 O registro oficial dos pacotes, chamado **Julia General Registry** e uma listagem de todos os pacotes [juliapackages](https://juliapackages.com/), facilita o acesso a milhares de bibliotecas, mas também é possível adicionar pacotes de repositórios privados ou do GitHub com `Pkg.add(url)`. 
 
-O sistema de pacotes do Julia é acessado pelo módulo `Pkg` ou pelo **modo de pacotes** no REPL (`]`). As principais operações incluem:
+O sistema de pacotes do Julia é acessado pelo módulo `Pkg` ou pelo **modo de pacotes** no REPL (`]`). Se 
 
-1. Instalação de pacotes
+
+As principais operações incluem:
+
+1. Instalação
 - Via registro oficial:
 ```julia
 using Pkg
@@ -359,32 +362,38 @@ Pkg.add("NomeDoPacote")
 ```julia
 Pkg.add(url="https://github.com/usuario/pacote.git")
 ```
+
+2. Carregamento
+Depois de instalado, um pacote pode ser usado carregando-o, entretanto, nenhuma mensagem é devolvida no REPL:
+```julia
+using NomeDoPacote
+```
      
-2. Atualização  
+3. Atualização  
 Atualiza todos os pacotes instalados para as versões mais recentes compatíveis:
 ```julia
 Pkg.update()
 ```
 
-3. Remoção  
+4. Remoção  
 Remove um pacote do ambiente:
 ```julia
 Pkg.rm("NomeDoPacote")
 ```
 
-4. Listagem de pacotes instalados  
+5. Listagem de pacotes instalados  
 Exibe os pacotes no ambiente atual:
 ```julia
 Pkg.status()
 ```
 
-5. Ativação de ambientes  
-Os ambientes controlam versões de pacotes e dependências para projetos específicos
+6. Ativação de ambientes  
+Os ambientes controlam versões de pacotes e dependências para projetos específicos, veja mais logo em seguida:
 ```julia
 Pkg.activate("caminho/do/ambiente")
 ```
 
-6. Criação de pacotes  
+7. Criação de pacotes  
 Para criar pacotes personalizados:
 ```julia
 Pkg.generate("NomeDoPacote")
@@ -461,7 +470,7 @@ Pkg.instantiate()  # Para instalar as dependências listadas
 
 Em resumo, os ambientes em Julia proporcionam um controle flexível e eficiente sobre as dependências do projeto, melhorando a reprodutibilidade e o isolamento de pacotes, essenciais para trabalhar com projetos complexos ou múltiplos.
 
-### Conclusão
+## Conclusão
 
 A criação de **Julia** foi uma resposta direta às limitações percebidas em outras linguagens usadas para computação científica e análise numérica. Desde sua fundação, a linguagem tem sido bem-sucedida em cumprir a visão de oferecer alto desempenho sem sacrificar facilidade de uso. 
 
