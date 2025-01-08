@@ -477,9 +477,9 @@ Sua combinação única de compilação JIT, tipagem dinâmica, concorrência na
 
 Em resumo, **Julia** é uma linguagem de programação poderosa, ideal para computação científica e tarefas que exigem alto desempenho. Com sua sintaxe amigável, suporte a paralelismo e grande potencial de integração com outras linguagens, **Julia** se torna uma opção atraente para aqueles que trabalham com grandes volumes de dados ou problemas computacionalmente exigentes, mesmo que ainda não tenha o mesmo ecossistema ou popularidade de linguagens como Python e R.
 
-## Para se aprofundar
+## Para saber mais
 
-**Sites**
+### Sites
 
 [Livros](https://julialang.org/learning/books/)
 
@@ -491,7 +491,7 @@ Em resumo, **Julia** é uma linguagem de programação poderosa, ideal para comp
 
 [Introducing Julia](https://en.wikibooks.org/wiki/Introducing_Julia)
 
-**Livros**
+### Livros
 
 Engheim, E. (2022). Julia as a second language. O’REILLY MEDIA.
 
@@ -513,7 +513,7 @@ Phillips, L. (2024). Practical Julia. No Starch Press.
 
 Voulgaris, Z. (2016). Julia for data science (First edition). Technics Publications.
 
-**Vídeos**
+### Vídeos
 
 [Tutoriais de Julia em Português - Super Tutorial do Básico](https://www.youtube.com/watch?v=Gmm5voUQaHw)
 
@@ -522,3 +522,5 @@ Voulgaris, Z. (2016). Julia for data science (First edition). Technics Publicati
 [A Gentle Introduction to Julia](https://www.youtube.com/watch?v=4igzy3bGVkQ&list=PLP8iPy9hna6SCcFv3FvY_qjAmtTsNYHQE&index=2)
 
 [Statistics with Julia from the ground up | Workshop | JuliaCon 2021](https://www.youtube.com/watch?v=IlPoU5Yr2QI)
+
+Fonte da imagem: [julia](https://julialang.org).

@@ -1,0 +1,50 @@
+---
+title: Gráficos e mapas além do R
+subtitle: "Lista dos principais APPs gratuitos para gráficos e mapas"
+summary: "Lista dos principais APPs gratuitos para gráficos e mapas"
+author: Maurício Vancine 
+date: "2024-12-21"
+publishDate: r`Sys.time()` 
+lastUpdated: r`Sys.time()`
+layout: single-sidebar
+slug: app-graphics-maps
+links:
+categories:
+  - Blog
+tags:
+  - Software
+  - Gráficos
+  - Mapas
+  - Compilação
+featured: yes
+format: hugo
+draft: false
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(knitr)
+
+knitr::opts_chunk$set(eval=TRUE, 
+                      echo=FALSE,
+                      fig.align = "center")
+
+options(htmltools.dir.version = TRUE)
+
+app_graphics_maps <- read_csv("/home/mude/data/github/apero/content/blog/app-graphics-maps/app_graphics_maps.csv", 
+                     col_types = cols())
+```
+
+## Contextualização
+
+Algumas vezes precisamos fazer gráficos ou mapas de forma rápida. E na maior parte do tempo, importar dados e escrever scripts no R e outras linguagen, ou mesmo o QGIS pode ser um pouco cansativo.
+
+## Principais APPs gratuitos para gráficos e mapas
+
+Depois que assisti ao vídeo do [Prof. Carlos Grohmann](http://carlosgrohmann.com/gmaps/): [Faça gráficos incríveis de maneira SIMPLES e GRATUITA - Scimago Graphica](https://www.youtube.com/watch?v=PIlVCBUzIG8), tive a ideia de compilar uma lista de APPs gratuitos para gráficos e mapas. 
+
+```{r echo=FALSE}
+kable(app_graphics_maps)
+```
+
+Fonte da imagem: [Egor Komarov/Pexels](https://www.pexels.com/pt-br/foto/tecnologia-comprimido-tablet-musica-13003485/).

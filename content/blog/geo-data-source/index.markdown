@@ -25,8 +25,8 @@ format: hugo
 <link href="{{< blogdown/postref >}}index_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
 <script src="{{< blogdown/postref >}}index_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
 <script>window.xaringanExtraClipboard(null, {"button":"<i class=\"fa fa-clipboard\"><\/i> Copiar Código","success":"<i class=\"fa fa-check\" style=\"color: #90BE6D\"><\/i> Copiado!","error":"Press Ctrl+C to Copy"})</script>
-<link href="{{< blogdown/postref >}}index_files/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
-<link href="{{< blogdown/postref >}}index_files/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+<link href="{{< blogdown/postref >}}index_files/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="{{< blogdown/postref >}}index_files/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
 
 
 
@@ -52,8 +52,8 @@ Dentre as bases vetoriais, destaco as seguintes fontes.
 |[IBGE](https://www.ibge.gov.br/geociencias/downloads-geociencias.html)|Limites territoriais e censitários do Brasil                                                                  |
 |[IBGE Cidades](https://cidades.ibge.gov.br/)                    |Informações do IBGE sobre os municípios e estados do Brasil                                                   |
 |[Sistema Nacional de Informações sobre Recursos Hídricos (SNIRH)](https://www.snirh.gov.br/)|Base para disponibilização das informações sobre águas no Brasil                                              |
-|[Sistema IBGE de Recuperação Automática (SIDRA)](https://sidra.ibge.gov.br/)|Indicadores econômicos, financeiros, sociais e políticos do Brasil                                            |
-|[FBDS](http://geo.fbds.org.br/)                                 |Uso da terra, APP e hidrografia - Mata Atlântica e Cerrado                                                    |
+|[Sistema IBGE de Recuperação Automática (SIDRA)](https://sidra.ibge.gov.br/)|Indicadores econômicos; financeiros; sociais e políticos do Brasil                                            |
+|[FBDS](http://geo.fbds.org.br/)                                 |Uso da terra; APP e hidrografia - Mata Atlântica e Cerrado                                                    |
 |[Atlas da Mata Atlântica](http://mapas.sosma.org.br/dados/)     |Mapeamento de floresta para o Bioma da Mata Atlântica                                                         |
 |[Atlas da Agropecuária Brasileira](http://atlasagropecuario.imaflora.org/mapa)|Dados dos limites de polígonos do Cadastro Ambiental Rural (CAR)                                              |
 |[GeoBank](http://geosgb.cprm.gov.br/)                           |Dados geológicos do Brasil                                                                                    |
@@ -62,8 +62,8 @@ Dentre as bases vetoriais, destaco as seguintes fontes.
 |[CSR Maps](http://maps.csr.ufmg.br)                             |Diversos dados vetoriais e raster para o Brasil                                                               |
 |[Dados Abertos da Agência Nacional de Águas e Saneamento Básico](https://dadosabertos.ana.gov.br/)|Dados de águas e saneamento básico para o Brasil                                                              |
 |[TerraBrasilis](http://terrabrasilis.dpi.inpe.br/)              |Dados de estações pluviométricas e fluviométricas para o Brasil                                               |
-|[HIDROWEB](https://www.snirh.gov.br/hidroweb/serieshistoricas)  |Dados de infraestrutura de transporte (rodovias, ferrovias e hidrovias) do Brasil                             |
-|[Departamento Nacional de Infraestrutura de Transportes (DNIT)](https://www.gov.br/dnit/pt-br/assuntos/atlas-e-mapas)|Plataforma web desenvolvida pelo INPE para acesso, consulta, análise e disseminação de dados geográficos      |
+|[HIDROWEB](https://www.snirh.gov.br/hidroweb/serieshistoricas)  |Dados de infraestrutura de transporte (rodovias; ferrovias e hidrovias) do Brasil                             |
+|[Departamento Nacional de Infraestrutura de Transportes (DNIT)](https://www.gov.br/dnit/pt-br/assuntos/atlas-e-mapas)|Plataforma web desenvolvida pelo INPE para acesso; consulta; análise e disseminação de dados geográficos      |
 |[Intact Forest Landscapes](https://intactforests.org/data.ifl.html)|Dados de floresta de paisagens intactas para o mundo                                                          |
 |[Ecoregions](https://ecoregions2017.appspot.com/)               |Dados de biorregiões e biomas do mundo                                                                        |
 |[UN Biodiversity Lab](https://www.unbiodiversitylab.org/)       |Diversas bases de dados para o mundo                                                                          |
@@ -79,12 +79,12 @@ Dentre as bases vetoriais, destaco as seguintes fontes.
 |[Database of Global Administrative Areas (GADM)](https://gadm.org/)|Limites de áreas administrativas do mundo                                                                     |
 |[Natural Earth](https://www.naturaleatoriorthdata.com/)         |Diversos limites para o mundo                                                                                 |
 |[Socioeconomic Data and Applications Center (sedac)](https://sedac.ciesin.columbia.edu/)|Dados socio-econômicos para o mundo                                                                           |
-|[WorldPop](https://www.worldpop.org/)                           |Dados sobre distribuição, demogradia e dinâmica da população no mundo                                         |
+|[WorldPop](https://www.worldpop.org/)                           |Dados sobre distribuição; demogradia e dinâmica da população no mundo                                         |
 |[Protected Planet](https://www.protectedplanet.net)             |Limites de áreas protegidas para o mundo                                                                      |
 |[Global Biological Information Facility (GBIF)](http://www.gbif.org)|Dados de ocorrências de espécies para o mundo                                                                 |
 |[Species Link](http://www.splink.cria.org.br)                   |Dados de ocorrências de espécies para o Brasil                                                                |
 |[Global Invasive Species Information Network (GISIN)](http://www.gisin.org)|Dados de ocorrências de espécies invasoras para o mundo                                                       |
-|[International Institute for Applied Systems Analysis (IIASA)](https://iiasa.ac.at/)|Dados de mudanças climáticas, segurança energética, envelhecimento da população e desenvolvimento sustentável |
+|[International Institute for Applied Systems Analysis (IIASA)](https://iiasa.ac.at/)|Dados de mudanças climáticas; segurança energética; envelhecimento da população e desenvolvimento sustentável |
 
 ### Raster
 
@@ -93,8 +93,8 @@ Dentre as bases matriciais, destaco as seguintes.
 
 |Bases de dados                                             |Descrição                                                                                                                          |
 |:----------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------|
-|[MapBiomas](https://mapbiomas.org/)                        |Uso e cobertura da terra para o Brasil, Panamazonia Legal e Chaco, de 1985 a 2019 do Brasil                                        |
-|[Monitoramento da Cobertura e Uso da Terra do Brasil - IBGE](https://www.ibge.gov.br/apps/monitoramento_cobertura_uso_terra/v1/)|Mapeamento periódico da cobertura e uso da terra, de 2000 a 2018 do Brasil                                                         |
+|[MapBiomas](https://mapbiomas.org/)                        |Uso e cobertura da terra para o Brasil Panamazonia Legal e Chaco de 1985 a 2019 do Brasil                                          |
+|[Monitoramento da Cobertura e Uso da Terra do Brasil - IBGE](https://www.ibge.gov.br/apps/monitoramento_cobertura_uso_terra/v1/)|Mapeamento periódico da cobertura e uso da terra de 2000 a 2018 do Brasil                                                          |
 |[Bahlu](ftp://madeira.dea.ufv.br/bdados/bhalu/)            |Distribuições históricas de terras agrícolas e pastagens para todo o Brasil de 1940 a 2012                                         |
 |[Dados meteorológicos do Brasil](https://sites.google.com/site/alexandrecandidoxavierufes/dados-meteorologicos-do-brasil)|Dados meteorológicos do Brasil                                                                                                     |
 |[USGS](https://www.usgs.gov/)                              |Dados de diversos satélites livres para o mundo                                                                                    |
@@ -120,7 +120,7 @@ Dentre as bases matriciais, destaco as seguintes.
 |[Global forest management](https://zenodo.org/record/5879022#.YozZ_yPMKXL)|Dados de florestas manejadas                                                                                                       |
 |[Structural Condition Index](https://figshare.com/articles/dataset/SCI_2020_version_-_Continent/11608182)|Índice de condição da estrutura de florestas                                                                                       |
 |[Irrecoverable carbon in Earth's ecosystems](https://zenodo.org/record/4091029#.YozZ_yPMKXL)|Dados de carbono irrecuperável dos ecossistemas                                                                                    |
-|[Global Forest Canopy Height, 2019](https://glad.umd.edu/dataset/gedi)|Dados de altura do dossel de florestas do mundo todo                                                                               |
+|[Global Forest Canopy Height 2019](https://glad.umd.edu/dataset/gedi)|Dados de altura do dossel de florestas do mundo todo                                                                               |
 |[A high-resolution canopy height model of the Earth](https://langnico.github.io/globalcanopyheight/)|Dados de altura do dossel de florestas do mundo todo                                                                               |
 |[Forest Landscape Integrity Index](https://www.forestlandscapeintegrity.com/home)|Índice de integridade de florestas da paisagem                                                                                     |
 |[GHSL - Global Human Settlement Layer](https://ghsl.jrc.ec.europa.eu/download.php)|Dados e ferramentas abertos e gratuitos para avaliar a presença humana no planeta                                                  |
@@ -133,7 +133,7 @@ Dentre as bases matriciais, destaco as seguintes.
 |[ecoClimate](https://www.ecoclimate.org/)                  |Dados climáticos para o mundo                                                                                                      |
 |[Vincent Deblauwe climate data](https://vdeblauwe.wordpress.com/download/)|Dados climáticos derivados de sensoriamento remoto para o mundo                                                                    |
 |[PaleoClim.org](http://www.paleoclim.org/)                 |Dados climáticos do passado para o mundo                                                                                           |
-|[EarthEnv](https://www.earthenv.org/)                      |Dados de cobertura da terra, nuvens, relevo e hidrografia                                                                          |
+|[EarthEnv](https://www.earthenv.org/)                      |Dados de cobertura da terra nuvens relevo e hidrografia                                                                            |
 |[WWF - Dados geoespaciais](https://www.wwf.org.br/natureza_brasileira/reducao_de_impactos2/programa_ciencias/dados_geoespaciais_16012018_1932/)|Diversos dados geoespaciais para o mundo                                                                                           |
 |[CGIAR-CSI - Consortium for Spatial Information](https://cgiarcsi.community/category/data/)|Diversos dados geoespaciais para o mundo                                                                                           |
 |[SoilGrids](https://soilgrids.org/)                        |Dados de solo para o mundo                                                                                                         |
@@ -152,7 +152,7 @@ Dentre as bases matriciais, destaco as seguintes.
 
 ### Pacotes do R
 
-Dentre os pacotes no R para download de dados geográficos, destaco os seguintes. 
+Dentre os pacotes no R para download de dados geográficos, destaco os seguintes.
 
 
 |Pacotes       |Descrição                                                                            |
@@ -168,15 +168,15 @@ Dentre os pacotes no R para download de dados geográficos, destaco os seguintes
 |[geonames](https://cran.r-project.org/web/packages/geonames/index.html)|Interface para o serviço da Web de consulta espacial 'Geonames'                      |
 |[rgbif](https://cran.r-project.org/web/packages/rgbif/index.html)|Interface para o Global 'Biodiversity' Information Facility API                      |
 |[maptools](https://cran.r-project.org/web/packages/maptools/index.html)|Ferramentas para lidar com objetos espaciais                                         |
-|[marmap](https://cran.r-project.org/web/packages/marmap/index.html)|Importar, traçar e analisar dados batimétricos e topográficos                        |
+|[marmap](https://cran.r-project.org/web/packages/marmap/index.html)|Importar traçar e analisar dados batimétricos e topográficos                         |
 |[oce](https://cran.r-project.org/web/packages/oce/index.html)|Fonte e processamento de dados oceanográficos                                        |
 |[envirem](https://cran.r-project.org/web/packages/envirem/index.html)|Geração de Variáveis ENVIREM                                                         |
 |[sdmpredictors](https://cran.r-project.org/web/packages/sdmpredictors/index.html)|Conjuntos de dados preditor de modelagem de distribuição de espécies                 |
-|[metScanR](https://cran.r-project.org/web/packages/metScanR/index.html)|Encontre, Mapeie e Colete Dados e Metadados Ambientais                               |
+|[metScanR](https://cran.r-project.org/web/packages/metScanR/index.html)|Encontre Mapeie e Colete Dados e Metadados Ambientais                                |
 |[ClimDown](https://cran.r-project.org/web/packages/ClimDown/index.html)|Biblioteca de redução de escala do clima para a produção diária do modelo climático  |
 |[rWBclimate](https://cran.r-project.org/web/packages/rWBclimate/index.html)|Acessa dados climáticos do Banco Mundial                                             |
 |[rnoaa](https://cran.r-project.org/web/packages/rnoaa/index.html)|Dados meteorológicos 'NOAA' de R                                                     |
-|[RNCEP](https://cran.r-project.org/web/packages/RNCEP/index.html)|Obtenha, organize e visualize dados meteorológicos NCEP                              |
+|[RNCEP](https://cran.r-project.org/web/packages/RNCEP/index.html)|Obtenha organize e visualize dados meteorológicos NCEP                               |
 |[smapr](https://cran.r-project.org/web/packages/smapr/index.html)|Aquisição e processamento de dados ativos-passivos (SMAP) de umidade do solo da NASA |
 
 Fonte da imagem: [Ruthie/Unsplash](https://unsplash.com/pt-br/fotografias/mapa-globo-rolar-lote-a6mfMjCFkII).

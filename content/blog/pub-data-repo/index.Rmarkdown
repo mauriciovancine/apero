@@ -20,6 +20,20 @@ format: hugo
 draft: false
 ---
 
+```{r setup, include=FALSE}
+library(tidyverse)
+library(knitr)
+
+knitr::opts_chunk$set(eval=TRUE, 
+                      echo=FALSE,
+                      fig.align = "center")
+
+options(htmltools.dir.version = TRUE)
+
+pub_repo <- read_csv("/home/mude/data/github/apero/content/blog/pub-data-repo/pub_repositorio_dados.csv", 
+                     col_types = cols())
+```
+
 ## Contextualização
 
 Disponibilizar dados dos artigos publicados é uma ótima forma de aumentar a reprodutibilidade e acesso aos dados. Entretanto, essa é não é uma tarefa muito fácil, principalmente se a intenção a disponibilida de grandes conjuntos de dados.
@@ -33,11 +47,6 @@ Eu optei por disponibilizar os dados no [Zenodo](https://zenodo.org), mas antes 
 Fiz uma tabela com informações sobre os principais repositórios, incluindo detalhes sobre o tamanho do repositório, limites de tamanho de arquivos e quantidade de arquivos.
 
 ```{r echo=FALSE, message=FALSE}
-library(tidyverse)
-library(knitr)
-
-pub_repo <- read_csv("/home/mude/data/github/apero/content/blog/pub-data-repo/pub_repositorio_dados.csv", 
-                     col_types = cols())
 kable(pub_repo)
 ```
 

@@ -1,9 +1,9 @@
 ---
 title: "QGIS: plugins"
-subtitle: "Importar e manejar grandes volumes de dados no R"
-summary: "Importar e manejar grandes volumes de dados no R"
+subtitle: "Lista dos principais plugins do QGIS"
+summary: "Lista dos principais plugins do QGIS"
 author: Maurício Vancine
-date: "2028-08-24"
+date: "2025-01-04"
 publishDate: r`Sys.time()`
 lastUpdated: r`Sys.time()`
 layout: single-sidebar
@@ -12,34 +12,71 @@ links:
 categories: 
   - Blog
 tags:
-  - R
-  - Big Data
-  - arrow
-  - vroom
+  - QGIS
+  - Plugins
 featured: yes
 format: hugo
 draft: true
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(knitr)
+
+knitr::opts_chunk$set(eval=TRUE, 
+                      echo=FALSE,
+                      fig.align = "center")
+
+options(htmltools.dir.version = TRUE)
+
+qgis_plugins <- read_csv("/home/mude/data/github/apero/content/blog/qgis-plugins/qgis_plugins.csv", 
+                         col_types = cols())
 ```
 
 ## Contextualização
 
+Os **plugins do QGIS** são extensões que expandem as funcionalidades nativas da plataforma, tornando-a ainda mais poderosa e flexível para análises espaciais, visualização de dados e aplicações específicas. 
 
-## Plugins
+Como o QGIS é um software de código aberto, sua arquitetura modular permite que a comunidade de usuários e desenvolvedores contribua constantemente com novos plugins para atender às demandas em diversas áreas, como mapeamento interativo, geoprocessamento, sensoriamento remoto, análise temporal, gerenciamento de dados espaciais e integração com outras ferramentas.
 
-[](https://plugins.qgis.org/plugins/featured/)
- 
-[MOLUSCE](https://plugins.qgis.org/plugins/molusce/)
+Os plugins podem ser instalados diretamente no gerenciador de complementos do QGIS, e são classificados em três categorias principais:  
 
-## Saiba mais 
+1. **Ferramentas de análise e processamento**  
+Plugins como o *Processing Toolbox*, *Zonal Statistics* e *SCP* oferecem algoritmos avançados de geoprocessamento, estatísticas zonais e classificação de imagens de satélite, facilitando análises detalhadas de paisagens, vegetação e uso do solo.
 
-Farley, S.S., Dawson, A., Goring, S.J. & Williams, J.W. (2018). Situating Ecology as a Big-Data Science: Current Advances, Challenges, and Solutions. BioScience, 68, 563–576.
+2. **Visualização e apresentação de dados**  
+Extensões como o *QGIS2Web*, *TimeManager* e *OpenLayers Plugin* permitem criar mapas interativos, visualizar séries temporais e adicionar camadas de fundo, como Google Maps ou OpenStreetMap, para enriquecer os projetos cartográficos.
 
-Hampton, S.E., Strasser, C.A., Tewksbury, J.J., Gram, W.K., Budden, A.E., Batcheller, A.L., et al. (2013). Big data and the future of ecology. Frontiers in Ecology and the Environment, 11, 156–162.
+3. **Coleta e gestão de dados**  
+Ferramentas como o *QField for QGIS*, *DB Manager* e *Points2One* são voltadas para coleta de dados em campo, integração com bancos de dados espaciais e manipulação de pontos para criar linhas e polígonos.
 
-Nimmagadda, S.L., Reiners, T. & Rudra, A. (2017). Development of a Total Environment Data Science Approach in a Big Data Scale. Procedia Computer Science, Knowledge-Based and Intelligent Information & Engineering Systems: Proceedings of the 21st International Conference, KES-20176-8 September 2017, Marseille, France, 112, 1891–1900.
+Os plugins também incluem integrações com linguagens e plataformas externas, como o *R Plugin* para análises estatísticas avançadas.
 
-Fonte da imagem: [Sergei Starostin/Pexels](https://www.pexels.com/pt-br/foto/computador-salgadinhos-memoria-lembranca-6636474).
+A vasta biblioteca de plugins permite que o QGIS seja usado em uma ampla variedade de aplicações, desde projetos de conservação ambiental até o planejamento urbano, engenharia e gestão de recursos naturais. Essa flexibilidade é um dos principais fatores que contribuem para o crescente uso do QGIS em todo o mundo.
+
+A lista total de plugins pode ser acessa no repositório de plugins: [QGIS Python Plugins Repository](https://plugins.qgis.org/plugins/).
+
+## Principais plugins do QGIS
+
+Aqui, listo os principais plugins.
+
+```{r echo=FALSE}
+kable(qgis_plugins)
+```
+
+## Para saber mais
+
+### Sites
+
+https://www.geoaplicada.com/plugins-essenciais-para-o-qgis/
+https://clickgeo.com.br/plugins-python-qgis/
+https://www.qgistutorials.com/en/docs/using_plugins.html
+https://gis.escoladedados.org/plugins-qgis.html
+https://docs.qgis.org/3.34/en/docs/training_manual/qgis_plugins/index.html
+
+### Vídeos
+
+- [Plugins do QGIS](https://www.youtube.com/watch?v=KZggLYlyzOE&list=PLhOD9tBaOaPtj357pC0dVV7F62Ahbt9pA)
+- [10 PLUGINS que Todo Usuário de QGIS Precisa Ter!](https://www.youtube.com/watch?v=PvXpF0_U4Xw)
+
+Fonte da imagem: [QGIS](https://www.qgis.org/styleguide).
