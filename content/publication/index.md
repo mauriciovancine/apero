@@ -335,6 +335,8 @@ taxonômica e funcional de anfíbios na Mata Atlântica](/publications/anfibios-
 
 1. [Unidades de Conservação: guardiãs da Mata Atlântica](https://www.ekosbrasil.org/unidades-de-conservacao-guardias-da-mata-atlantica). (2024). Ekos Brasil
 
+1. [About 97% of the Atlantic Forest consists of parts smaller than 50 hectares](https://www.wwf.org.br/?88703/About-97-of-the-Atlantic-Forest-consists-of-parts-smaller-than-50-hectares). (2024). WWF
+
 1. [Condomínios, estradas e caça: Mata Atlântica enfrenta novos riscos](https://olhardigital.com.br/2024/06/25/ciencia-e-espaco/condominios-estradas-e-caca-mata-atlantica-enfrenta-novos-riscos/). (2024). Olhar Digital [Ciência e Espaço]
 
 1. [Desmatamento desacelera na Mata Atlântica, mas fragmentação aumenta](https://brasil.mongabay.com/2024/07/desmatamento-desacelera-na-mata-atlantica-mas-fragmentacao-aumenta). (2024). Mongabay Brasil
