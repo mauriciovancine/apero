@@ -192,9 +192,22 @@ Piauí](/publications/frag-pi). *Revista Observatório de la Economía
 Latinoamericana*, 22(11), e7996.
 
 1. Marques, R. C. M., <u>**Vancine, M. H.**</u>, Súarez, Y. R., Pereira, J. G., 
-Domingos, J. D., Silva, A. B. B., Pereira, Z. V. [Dinâmica espaço temporal: variações 
-na composição e configuração da vegetação](). *Revista Brasileira de Geografia Física*. 
-*in press*.
+Domingos, J. D., Silva, A. B. B., Pereira, Z. V. (2024). [Dinâmica espaço temporal: variações 
+na composição e configuração da vegetação](/publications/frag-ms). 
+*Revista Brasileira de Geografia Física*. *in press*.
+
+1. Carvalho, T., Falconi, N., White, T., Anjos, L. A., Giasson, L. O. M., 
+<u>**Vancine, M. H.**</u>, Haddad, C. F. B., Toledo, L. F., Becker, C. G. (2025) [The role of 
+seasonal migration in predicting amphibian population persistence across fragmented 
+tropical landscapes: an Individual-Based Model](/publications/frag-habitatsplit-ibm). 
+*Biodiversity and Conservation*. *in press*.
+
+1. Gonçalves-Souza, T., Chase, J., Haddad, N., <u>**Vancine, M. H.**</u>, Melo, F. P. L., 
+Aizen, M., Bernard, E., Chiarello, G. A., Didham, R., Faria, D., Gibb, H., Lima, M., 
+Magnago, L., Mariano Neto, E., Nogueira, A., Nemésio, A., Passamani, M., Pinho, B. X., 
+Rocha-Santos, L., Rodrigues, R., Safar, N., Santos, B., Soto-Werschitz, A., Tabarelli, M., 
+Uehara-Prado, M., Vasconcelos, H., Vieira, S., Sanders, N. (2025). [Species turnover does not 
+rescue biodiversity in fragmented landscapes](/publications/frag-turnover). *Nature*. *in press*.
 
 # Livros
 
