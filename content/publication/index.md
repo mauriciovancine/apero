@@ -357,3 +357,5 @@ taxonômica e funcional de anfíbios na Mata Atlântica](/publications/anfibios-
 1. [Consciência ambiental é aceleradora de projetos de restauração na Mata Atlântica](https://umsoplaneta.globo.com/clima/noticia/2024/09/26/consciencia-ambiental-e-aceleradora-de-projetos-de-restauracao-na-mata-atlantica.ghtml). (2024). Um Só Planeta
 
 1. [No Clima dos Biomas: com restauração de florestas e nascentes de água, projetos buscam recuperar uma Mata Atlântica degradada](https://umsoplaneta.globo.com/clima/noticia/2024/09/26/no-clima-dos-biomas-com-restauracao-de-florestas-e-nascentes-de-agua-projetos-buscam-recuperar-uma-mata-atlantica-degradada.ghtml). (2024). Um Só Planeta
+
+1. [O paradoxo da Mata Atlântica](https://piaui.folha.uol.com.br/paradoxo-mata-atlantica-crescimento/). (2025). Piauí
